@@ -30,10 +30,10 @@ class Main {
     private static void runTest(final Algorithm algorithmUnderTest) {
 	System.out.println(algorithmUnderTest.getClass().getName());
 
-	for (var j = 0; j < 7; j++) {
+	for (var nExp10 = 0; nExp10 < 7; nExp10++) {
 
-	    final var size = (long) Math.pow(10, j);
-	    final Supplier<IntStream> given = () -> new Random(0).ints(size);
+	    final var n = (long) Math.pow(10, nExp10);
+	    final Supplier<IntStream> given = () -> new Random(0).ints(n);
 	    final var givenNotSorted = given.get().toArray();
 	    final var expectedSorted = given.get().sorted().toArray();
 
@@ -44,7 +44,7 @@ class Main {
 
 	    final var duration = System.nanoTime() - startTime;
 
-	    System.out.printf("Trial %1$d with n=%2$d elements:", Integer.valueOf(j), Long.valueOf(size));
+	    System.out.printf("Trial %1$d with n=%2$d elements:", Integer.valueOf(nExp10), Long.valueOf(n));
 	    if (Arrays.equals(actual, expectedSorted)) {
 		System.out.println("\tarray is sorted!");
 	    } else {
@@ -53,26 +53,23 @@ class Main {
 
 	    System.out.printf("\tTime:\t\t\t%1$dns | <%2$ds\n", Long.valueOf(duration),
 		    Long.valueOf(TimeUnit.NANOSECONDS.toSeconds(duration) + 1));
-	    System.out.printf("\tTime per element:\t%1$dns\n", Long.valueOf(duration / size));
+	    System.out.printf("\tTime per element:\t%1$dns\n", Long.valueOf(duration / n));
 
-	    System.out.printf("\tComparisons:\t c=%1$d | c/(n*ln(n))=%2$f | c/(n*sqrt(n))=%3$f | c/(n*n)=%4$f\n",
-		    Long.valueOf(operationResult.comparisons()),
-		    // will be relatively near 1 if the algorithm is of time complexity O(n*log(n))
-		    Double.valueOf(Main.divideByNLnN(operationResult.comparisons(), size)),
-		    // same ... if it is of tc. O(n*sqrt(n))
-		    Double.valueOf(Main.divideByNSqrtN(operationResult.comparisons(), size)),
-		    // same ... if it is of tc. O(n*n)
-		    Double.valueOf(Main.divideBySqrN(operationResult.comparisons(), size)));
-
-	    System.out.printf("\tSwappings:\t s=%1$d | s/(n*ln(n))=%2$f | s/(n*sqrt(n))=%3$f | s/(n*n)=%4$f\n",
-		    Long.valueOf(operationResult.swaps()),
-		    // will be relatively near 1 if the algorithm is of time complexity O(n*log(n))
-		    Double.valueOf(Main.divideByNLnN(operationResult.swaps(), size)),
-		    // same ... if it is of tc. O(n*sqrt(n))
-		    Double.valueOf(Main.divideByNSqrtN(operationResult.swaps(), size)),
-		    // same ... if it is of tc. O(n*n)
-		    Double.valueOf(Main.divideBySqrN(operationResult.swaps(), size)));
+	    Main.printMetric("Comparisons", "c", operationResult.comparisons(), n);
+	    Main.printMetric("Swaps", "s", operationResult.swaps(), n);
 	}
+    }
+
+    private static void printMetric(final String metricName, final String metricVariableName, final long metricValue,
+	    final long n) {
+	System.out.printf("\t%1$s:\t %2$s=%3$d | %2$s/(n*ln(n))=%4$f | %2$s/(n*sqrt(n))=%5$f | %2$s/(n*n)=%6$f\n",
+		metricName, metricVariableName, Long.valueOf(metricValue),
+		// will be relatively near 1 if the algorithm is of time complexity O(n*log(n))
+		Double.valueOf(Main.divideByNLnN(metricValue, n)),
+		// same ... if it is of tc. O(n*sqrt(n))
+		Double.valueOf(Main.divideByNSqrtN(metricValue, n)),
+		// same ... if it is of tc. O(n*n)
+		Double.valueOf(Main.divideBySqrN(metricValue, n)));
     }
 
 }
