@@ -4,8 +4,8 @@ import org.eclipse.jdt.annotation.NonNull;
 
 public class OperationResult<T> {
 
-    private int comparisons = 0;
-    private int swaps = 0;
+    private long comparisons = 0;
+    private long swaps = 0;
 
     @SuppressWarnings("null")
     private T returnedValue = null;
@@ -13,10 +13,18 @@ public class OperationResult<T> {
     public OperationResult() {
     }
 
-    public OperationResult(final int comparisons, final int swaps, final T returnedValue) {
+    public OperationResult(final long comparisons, final long swaps, final T returnedValue) {
 	this.comparisons = comparisons;
 	this.swaps = swaps;
 	this.returnedValue = returnedValue;
+    }
+
+    public long comparisons() {
+	return this.comparisons;
+    }
+
+    public long swaps() {
+	return this.swaps;
     }
 
     public T returnedValue() {
@@ -25,25 +33,17 @@ public class OperationResult<T> {
 
     @NonNull
     public OperationResult<T> returnedValue(@NonNull final T newReturnedValue) {
-	return new OperationResult<>(this.comparisons, this.swaps, newReturnedValue);
-    }
-
-    public int comparisons() {
-	return this.comparisons;
+	return new OperationResult<>(this.comparisons(), this.swaps(), newReturnedValue);
     }
 
     @NonNull
-    public OperationResult<T> addComparisons(final int addCount) {
-	return new OperationResult<>(this.comparisons + addCount, this.swaps, this.returnedValue);
-    }
-
-    public int swaps() {
-	return this.swaps;
+    public OperationResult<T> addComparisons(final long addCount) {
+	return this.add(addCount, 0, this.returnedValue());
     }
 
     @NonNull
-    public OperationResult<T> addSwaps(final int addCount) {
-	return new OperationResult<>(this.comparisons, this.swaps + addCount, this.returnedValue);
+    public OperationResult<T> addSwaps(final long addCount) {
+	return this.add(0, addCount, this.returnedValue());
     }
 
     @NonNull
@@ -52,7 +52,7 @@ public class OperationResult<T> {
     }
 
     @NonNull
-    public OperationResult<T> add(final int addComparisons, final int addSwaps, final T newReturnedValue) {
-	return new OperationResult<>(this.comparisons + addComparisons, this.swaps + addSwaps, newReturnedValue);
+    public OperationResult<T> add(final long addComparisons, final long addSwaps, final T newReturnedValue) {
+	return new OperationResult<>(this.comparisons() + addComparisons, this.swaps() + addSwaps, newReturnedValue);
     }
 }
