@@ -5,7 +5,7 @@ import org.eclipse.jdt.annotation.Nullable;
 
 import edu.schwabe.sequencesort.api.Algorithm;
 import edu.schwabe.sequencesort.api.OperationResult;
-import edu.schwabe.sequencesort.outofplace.notinplace.IntQueue;
+import edu.schwabe.sequencesort.outofplace.algorithmic.IntQueue;
 
 public final class AlgorithmImpl implements Algorithm {
 

@@ -1,4 +1,4 @@
-package edu.schwabe.sequencesort.outofplace.notinplace;
+package edu.schwabe.sequencesort.outofplace.algorithmic;
 
 import org.eclipse.jdt.annotation.NonNull;
 import org.eclipse.jdt.annotation.Nullable;
