@@ -29,5 +29,10 @@
             <artifactId>outofplace</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
+        <dependency>
+            <groupId>edu.schwabe.sequencesort</groupId>
+            <artifactId>analysis</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
 	</dependencies>
 </project>

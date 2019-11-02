@@ -38,6 +38,7 @@
 		<module>edu.schwabe.sequencesort.api</module>
 		<module>edu.schwabe.sequencesort.inplace</module>
 		<module>edu.schwabe.sequencesort.outofplace</module>
+		<module>edu.schwabe.sequencesort.analysis</module>
 		<module>edu.schwabe.sequencesort.testrunner</module>
 	</modules>
 </project>
