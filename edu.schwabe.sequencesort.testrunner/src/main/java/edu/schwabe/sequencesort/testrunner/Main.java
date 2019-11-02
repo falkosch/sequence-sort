@@ -9,7 +9,7 @@ import java.util.stream.IntStream;
 
 import edu.schwabe.sequencesort.api.Algorithm;
 
-class Main {
+final class Main {
 
     public static void main(final String[] args) {
 	ServiceLoader.load(Algorithm.class).forEach(Main::runTest);

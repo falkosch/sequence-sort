@@ -5,7 +5,7 @@ import org.eclipse.jdt.annotation.NonNull;
 import edu.schwabe.sequencesort.api.Algorithm;
 import edu.schwabe.sequencesort.api.OperationResult;
 
-public class AlgorithmImpl implements Algorithm {
+public final class AlgorithmImpl implements Algorithm {
 
     @Override
     @NonNull

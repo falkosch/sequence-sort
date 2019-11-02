@@ -2,7 +2,7 @@ package edu.schwabe.sequencesort.api;
 
 import org.eclipse.jdt.annotation.NonNull;
 
-public class OperationResult<T> {
+public final class OperationResult<T> {
 
     private long comparisons = 0;
     private long swaps = 0;
