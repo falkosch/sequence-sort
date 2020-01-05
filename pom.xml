@@ -10,13 +10,16 @@
 	<description>A very old experiment of mine finding a O(n*log(n)) sorting algorithm. It is a merge-sort variation.</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java-release.version>13</java-release.version>
+		<maven.compiler.source>${java-release.version}</maven.compiler.source>
+		<maven.compiler.target>${java-release.version}</maven.compiler.target>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.eclipse.jdt</groupId>
 				<artifactId>org.eclipse.jdt.annotation</artifactId>
-				<version>2.2.300</version>
+				<version>2.2.400</version>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
@@ -26,9 +29,9 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.8.0</version>
+					<version>3.8.1</version>
 					<configuration>
-						<release>12</release>
+						<release>${java-release.version}</release>
 					</configuration>
 				</plugin>
 			</plugins>
