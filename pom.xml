@@ -10,9 +10,14 @@
 	<description>A very old experiment of mine finding a O(n*log(n)) sorting algorithm. It is a merge-sort variation.</description>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<project.reporting.outputDirectory>reports</project.reporting.outputDirectory>
+
 		<java-release.version>13</java-release.version>
 		<maven.compiler.source>${java-release.version}</maven.compiler.source>
 		<maven.compiler.target>${java-release.version}</maven.compiler.target>
+
+		<junit-jupiter.version>5.5.2</junit-jupiter.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -21,7 +26,22 @@
 				<artifactId>org.eclipse.jdt.annotation</artifactId>
 				<version>2.2.400</version>
 			</dependency>
-		</dependencies>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-api</artifactId>
+				<version>${junit-jupiter.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-params</artifactId>
+				<version>${junit-jupiter.version}</version>
+			</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+				<artifactId>junit-jupiter-engine</artifactId>
+				<version>${junit-jupiter.version}</version>
+		</dependency>
+	</dependencies>
 	</dependencyManagement>
 	<build>
 		<pluginManagement>
@@ -34,8 +54,39 @@
 						<release>${java-release.version}</release>
 					</configuration>
 				</plugin>
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<version>3.0.0-M4</version>
+				</plugin>
+				<plugin>
+					<groupId>org.jacoco</groupId>
+					<artifactId>jacoco-maven-plugin</artifactId>
+					<version>0.8.5</version>
+				</plugin>
 			</plugins>
 		</pluginManagement>
+		<plugins>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report-aggregate</id>
+						<goals>
+							<goal>report-aggregate</goal>
+						</goals>
+						<phase>verify</phase>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
 	</build>
 	<modules>
 		<module>edu.schwabe.sequencesort.api</module>
