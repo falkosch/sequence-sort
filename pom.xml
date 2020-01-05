@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -7,7 +7,12 @@
 	<artifactId>sequencesort</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<description>A very old experiment of mine finding a O(n*log(n)) sorting algorithm. It is a merge-sort variation.</description>
+	<description>Aggregates a very old experiment of mine finding a O(n*log(n)) sorting algorithm.</description>
+	<modules>
+		<module>algorithm</module>
+		<module>analysis</module>
+		<module>demonstrator</module>
+	</modules>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -36,16 +41,21 @@
 				<artifactId>junit-jupiter-params</artifactId>
 				<version>${junit-jupiter.version}</version>
 			</dependency>
-		<dependency>
-			<groupId>org.junit.jupiter</groupId>
+			<dependency>
+				<groupId>org.junit.jupiter</groupId>
 				<artifactId>junit-jupiter-engine</artifactId>
 				<version>${junit-jupiter.version}</version>
-		</dependency>
-	</dependencies>
+			</dependency>
+		</dependencies>
 	</dependencyManagement>
 	<build>
 		<pluginManagement>
 			<plugins>
+				<plugin>
+					<groupId>org.sonarsource.scanner.maven</groupId>
+					<artifactId>sonar-maven-plugin</artifactId>
+					<version>3.7.0.1746</version>
+				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
@@ -58,6 +68,12 @@
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
 					<version>3.0.0-M4</version>
+					<configuration>
+						<includes>
+							<include>**/Given*.java</include>
+							<include>**/When*.java</include>
+						</includes>
+					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.jacoco</groupId>
@@ -88,11 +104,4 @@
 			</plugin>
 		</plugins>
 	</build>
-	<modules>
-		<module>edu.schwabe.sequencesort.api</module>
-		<module>edu.schwabe.sequencesort.inplace</module>
-		<module>edu.schwabe.sequencesort.outofplace</module>
-		<module>edu.schwabe.sequencesort.analysis</module>
-		<module>edu.schwabe.sequencesort.testrunner</module>
-	</modules>
 </project>
