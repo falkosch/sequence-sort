@@ -10,31 +10,31 @@ import edu.schwabe.sequencesort.algorithm.OperationResult;
 
 class GivenAnEmptyOperationResult {
 
-    private OperationResult<int @NonNull []> testUnit;
-
-    @BeforeEach
-    void setup() {
-	this.testUnit = new OperationResult<>();
-    }
-
-    @Nested
-    class WhenAddingSwaps {
-
-	private OperationResult<int @NonNull []> actual;
+	private OperationResult<int @NonNull []> testUnit;
 
 	@BeforeEach
 	void setup() {
-	    this.actual = GivenAnEmptyOperationResult.this.testUnit.addSwaps(10);
+		this.testUnit = new OperationResult<>();
 	}
 
-	@Test
-	void itShouldReturnANewOperationResult() {
-	    Assertions.assertNotSame(GivenAnEmptyOperationResult.this.testUnit, this.actual);
-	}
+	@Nested
+	class WhenAddingSwaps {
 
-	@Test
-	void theNewOperationResultShouldHaveTheCountOfAddedSwaps() {
-	    Assertions.assertEquals(10, this.actual.swaps());
+		private OperationResult<int @NonNull []> actual;
+
+		@BeforeEach
+		void setup() {
+			this.actual = GivenAnEmptyOperationResult.this.testUnit.addSwaps(10);
+		}
+
+		@Test
+		void itShouldReturnANewOperationResult() {
+			Assertions.assertNotSame(GivenAnEmptyOperationResult.this.testUnit, this.actual);
+		}
+
+		@Test
+		void theNewOperationResultShouldHaveTheCountOfAddedSwaps() {
+			Assertions.assertEquals(10, this.actual.swaps());
+		}
 	}
-    }
 }

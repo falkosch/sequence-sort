@@ -7,10 +7,10 @@ import edu.schwabe.sequencesort.algorithm.inplace.AlgorithmImpl;
 
 class WhenCreatingAnAlgorithm {
 
-    @Test
-    void itShouldNotThrow() {
-	Assertions.assertDoesNotThrow(() -> {
-	    return new AlgorithmImpl();
-	});
-    }
+	@Test
+	void itShouldNotThrow() {
+		Assertions.assertDoesNotThrow(() -> {
+			return new AlgorithmImpl();
+		});
+	}
 }
