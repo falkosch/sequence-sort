@@ -1,11 +1,14 @@
 package edu.schwabe.sequencesort.algorithm.outofplace.algorithmic;
 
 import java.util.Arrays;
+import java.util.Objects;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import org.eclipse.jdt.annotation.NonNull;
 
 public final class IntQueue {
+
+  private static final int @NonNull [] EMPTY_ARRAY = new int[0];
 
   private IntQueueItem mTop = null;
   private IntQueueItem mTail = null;
@@ -20,7 +23,7 @@ public final class IntQueue {
   }
 
   public IntQueue(final int @NonNull [] items) {
-    Arrays.stream(items).forEach(x -> this.queue(x));
+    Arrays.stream(items).forEach(this::queue);
   }
 
   public boolean empty() {
@@ -72,12 +75,12 @@ public final class IntQueue {
   }
 
   public int @NonNull [] toArray() {
-    final var streamOfQueue = Stream.iterate(this.mTop, x -> x != null, x -> x.next());
-    final var values = streamOfQueue.mapToInt(x -> x.value()).toArray();
+    final var streamOfQueue = Stream.iterate(this.mTop, Objects::nonNull, IntQueueItem::next);
+    final var values = streamOfQueue.mapToInt(IntQueueItem::value).toArray();
     if (values != null) {
       return values;
     }
-    return new int[0];
+    return IntQueue.EMPTY_ARRAY;
   }
 
 }

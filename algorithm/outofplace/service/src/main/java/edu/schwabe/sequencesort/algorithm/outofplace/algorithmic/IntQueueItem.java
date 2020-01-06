@@ -30,6 +30,7 @@ public final class IntQueueItem {
 
   @NonNull
   public IntQueueItem next(final @NonNull IntQueueItem newNext) {
-    return this.mNext = newNext;
+    this.mNext = newNext;
+    return this.mNext;
   }
 }

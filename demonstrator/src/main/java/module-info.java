@@ -1,4 +1,4 @@
-module edu.schwabe.sequencesort.testrunner {
+module edu.schwabe.sequencesort.demonstrator {
   requires edu.schwabe.sequencesort.algorithm.api;
   requires edu.schwabe.sequencesort.algorithm.inplace;
   requires edu.schwabe.sequencesort.algorithm.outofplace;

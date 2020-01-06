@@ -23,8 +23,7 @@ class WhenCreatingAnOperationReport {
   }
 
   static Stream<Arguments> creationParameters() {
-    return Stream.of(
-      Arguments.of(new OperationResult<>(), 0, 0), Arguments.of(new OperationResult<>(0, 0, new int[0]), 0, 1), Arguments.of(new OperationResult<>(0, 0, new int[] { 0, 1 }), 1, 0)
-    );
+    return Stream
+      .of(Arguments.of(new OperationResult<>(), Integer.valueOf(0), Integer.valueOf(0)), Arguments.of(new OperationResult<>(0, 0, new int[0]), Integer.valueOf(0), Integer.valueOf(1)), Arguments.of(new OperationResult<>(0, 0, new int[] { 0, 1 }), Integer.valueOf(1), Integer.valueOf(0)));
   }
 }

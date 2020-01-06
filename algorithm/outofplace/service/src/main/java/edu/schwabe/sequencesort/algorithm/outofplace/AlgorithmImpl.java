@@ -8,6 +8,8 @@ import org.eclipse.jdt.annotation.Nullable;
 
 public final class AlgorithmImpl implements Algorithm {
 
+  private static final int @NonNull [] EMPTY_ARRAY = new int[0];
+
   @Override
   @NonNull
   public OperationResult<int @NonNull []> sort(final int @NonNull [] items) {
@@ -21,7 +23,7 @@ public final class AlgorithmImpl implements Algorithm {
 
   private static int @NonNull [] asArray(final @Nullable IntQueue sortedItems) {
     if (sortedItems == null) {
-      return new int[0];
+      return AlgorithmImpl.EMPTY_ARRAY;
     }
     return sortedItems.toArray();
   }
@@ -81,7 +83,7 @@ public final class AlgorithmImpl implements Algorithm {
 
     // one of both queues is already empty by now
     final var remainingSwaps = merge.consume(sortedSequence) + merge.consume(remainingSorted);
-    return new OperationResult<>(mergeSize, mergeSize + remainingSwaps, merge);
+    return new OperationResult<>(mergeSize, (long) mergeSize + (long) remainingSwaps, merge);
   }
 
 }

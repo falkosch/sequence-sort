@@ -19,7 +19,7 @@ public final class AlgorithmImpl implements Algorithm {
       return new OperationResult<>(0, 0, items);
     }
 
-    var operationResult = new OperationResult<>(rightBound - leftBound - 1, 0, items);
+    var operationResult = new OperationResult<>((long) rightBound - (long) leftBound - 1, 0, items);
 
     var pivot = leftBound;
     for (var i = leftBound + 1; i < rightBound; i++) {
@@ -53,8 +53,8 @@ public final class AlgorithmImpl implements Algorithm {
 
       } else {
 
-        operationResult =
-          operationResult.addSwaps(fromPivotApproachingRightBound - fromLeftBoundApproachingPivot);
+        operationResult = operationResult
+          .addSwaps((long) fromPivotApproachingRightBound - (long) fromLeftBoundApproachingPivot);
 
         final int rightItem = items[fromPivotApproachingRightBound];
 

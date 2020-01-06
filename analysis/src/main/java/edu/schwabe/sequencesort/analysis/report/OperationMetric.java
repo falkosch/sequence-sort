@@ -20,22 +20,25 @@ public final class OperationMetric {
   }
 
   public Long value() {
-    return this.mValue;
+    return Long.valueOf(this.mValue);
   }
 
   public Double divideByNLnN() {
     final var doubleN = this.doubleN();
-    return this.doubleValue() / (doubleN * Math.log(doubleN));
+    final var result = this.doubleValue() / (doubleN * Math.log(doubleN));
+    return Double.valueOf(result);
   }
 
   public Double divideByNSqrtN() {
     final var doubleN = this.doubleN();
-    return this.doubleValue() / (doubleN * Math.sqrt(doubleN));
+    final var result = this.doubleValue() / (doubleN * Math.sqrt(doubleN));
+    return Double.valueOf(result);
   }
 
   public Double divideBySqrN() {
     final var doubleN = this.doubleN();
-    return this.doubleValue() / (doubleN * doubleN);
+    final var result = this.doubleValue() / (doubleN * doubleN);
+    return Double.valueOf(result);
   }
 
 }
