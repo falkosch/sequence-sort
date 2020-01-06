@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.schwabe.sequencesort</groupId>
 	<artifactId>sequencesort</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 	<description>Aggregates a very old experiment of mine finding a O(n*log(n)) sorting algorithm.</description>
 	<modules>

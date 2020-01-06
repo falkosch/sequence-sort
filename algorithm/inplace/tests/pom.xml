@@ -6,9 +6,10 @@
 	<parent>
 		<groupId>edu.schwabe.sequencesort.algorithm.inplace</groupId>
 		<artifactId>inplace</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 	<artifactId>tests</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
 	<dependencies>
 		<dependency>
 			<groupId>org.eclipse.jdt</groupId>
@@ -21,12 +22,12 @@
 		<dependency>
 			<groupId>edu.schwabe.sequencesort.algorithm</groupId>
 			<artifactId>api</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>[1.0.0-SNAPSHOT,2.0.0)</version>
 		</dependency>
 		<dependency>
 			<groupId>edu.schwabe.sequencesort.algorithm.inplace</groupId>
 			<artifactId>service</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>[1.0.0-SNAPSHOT,2.0.0)</version>
 		</dependency>
 	</dependencies>
 </project> 

@@ -6,10 +6,11 @@
 	<parent>
 		<groupId>edu.schwabe.sequencesort</groupId>
 		<artifactId>sequencesort</artifactId>
-		<version>0.0.1-SNAPSHOT</version>
+		<version>1.0.0</version>
 	</parent>
 	<groupId>edu.schwabe.sequencesort.algorithm</groupId>
 	<artifactId>algorithm</artifactId>
+	<version>1.0.0</version>
 	<packaging>pom</packaging>
 	<description>Aggregates the API and variations of the sequence sort algorithm.</description>
 	<modules>
