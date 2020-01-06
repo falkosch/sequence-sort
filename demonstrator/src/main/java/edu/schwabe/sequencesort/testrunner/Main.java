@@ -1,12 +1,11 @@
 package edu.schwabe.sequencesort.testrunner;
 
-import java.util.Random;
-import java.util.ServiceLoader;
-import java.util.stream.IntStream;
-
 import edu.schwabe.sequencesort.algorithm.Algorithm;
 import edu.schwabe.sequencesort.algorithm.OperationReport;
 import edu.schwabe.sequencesort.algorithm.Reporter;
+import java.util.Random;
+import java.util.ServiceLoader;
+import java.util.stream.IntStream;
 import org.eclipse.jdt.annotation.NonNull;
 
 final class Main {

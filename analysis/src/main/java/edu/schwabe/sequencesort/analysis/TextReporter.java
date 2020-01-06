@@ -1,15 +1,14 @@
 package edu.schwabe.sequencesort.analysis;
 
-import java.util.ServiceLoader;
-import java.util.concurrent.TimeUnit;
-import java.util.stream.Stream;
-
 import edu.schwabe.sequencesort.algorithm.Algorithm;
 import edu.schwabe.sequencesort.algorithm.OperationReport;
 import edu.schwabe.sequencesort.algorithm.OperationResult;
 import edu.schwabe.sequencesort.algorithm.Reporter;
 import edu.schwabe.sequencesort.algorithm.SortedProperty;
 import edu.schwabe.sequencesort.analysis.report.OperationMetric;
+import java.util.ServiceLoader;
+import java.util.concurrent.TimeUnit;
+import java.util.stream.Stream;
 import org.eclipse.jdt.annotation.NonNull;
 
 public final class TextReporter implements Reporter {

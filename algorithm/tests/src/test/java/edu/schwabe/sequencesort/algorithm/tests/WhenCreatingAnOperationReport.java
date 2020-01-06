@@ -1,9 +1,8 @@
 package edu.schwabe.sequencesort.algorithm.tests;
 
-import java.util.stream.Stream;
-
 import edu.schwabe.sequencesort.algorithm.OperationReport;
 import edu.schwabe.sequencesort.algorithm.OperationResult;
+import java.util.stream.Stream;
 import org.eclipse.jdt.annotation.NonNull;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
