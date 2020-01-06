@@ -39,6 +39,29 @@ pipeline {
             ]
           )
           junit '**/target/surefire-reports/TEST-*.xml'
+          jacoco(
+            buildOverBuild: true, 
+            changeBuildStatus: true, 
+            deltaBranchCoverage: '10', 
+            deltaClassCoverage: '10', 
+            deltaComplexityCoverage: '10', 
+            deltaInstructionCoverage: '10', 
+            deltaLineCoverage: '10', 
+            deltaMethodCoverage: '10', 
+            execPattern: '**/target/jacoco.exec', 
+            maximumBranchCoverage: '90', 
+            maximumClassCoverage: '90', 
+            maximumComplexityCoverage: '90', 
+            maximumInstructionCoverage: '90', 
+            maximumLineCoverage: '90', 
+            maximumMethodCoverage: '90', 
+            minimumBranchCoverage: '80', 
+            minimumClassCoverage: '80', 
+            minimumComplexityCoverage: '80', 
+            minimumInstructionCoverage: '80', 
+            minimumLineCoverage: '80', 
+            minimumMethodCoverage: '80'
+          )
         }
       }
     }
