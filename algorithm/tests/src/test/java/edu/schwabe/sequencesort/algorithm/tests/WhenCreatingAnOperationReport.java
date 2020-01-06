@@ -13,20 +13,20 @@ import edu.schwabe.sequencesort.algorithm.OperationResult;
 
 class WhenCreatingAnOperationReport {
 
-	@ParameterizedTest
-	@MethodSource("creationParameters")
-	void itShouldNotThrow(
-	    @NonNull final OperationResult<int @NonNull []> operationResult, final int trial,
-	    final long duration
-	) {
-		Assertions.assertDoesNotThrow(() -> {
-			return new OperationReport(operationResult, trial, duration);
-		});
-	}
+    @ParameterizedTest
+    @MethodSource("creationParameters")
+    void itShouldNotThrow(
+        @NonNull final OperationResult<int @NonNull []> operationResult, final int trial,
+        final long duration
+    ) {
+        Assertions.assertDoesNotThrow(() -> {
+            return new OperationReport(operationResult, trial, duration);
+        });
+    }
 
-	static Stream<Arguments> creationParameters() {
-		return Stream.of(
-		    Arguments.of(new OperationResult<>(), 0, 0), Arguments.of(new OperationResult<>(0, 0, new int[0]), 0, 1), Arguments.of(new OperationResult<>(0, 0, new int[] { 0, 1 }), 1, 0)
-		);
-	}
+    static Stream<Arguments> creationParameters() {
+        return Stream.of(
+            Arguments.of(new OperationResult<>(), 0, 0), Arguments.of(new OperationResult<>(0, 0, new int[0]), 0, 1), Arguments.of(new OperationResult<>(0, 0, new int[] { 0, 1 }), 1, 0)
+        );
+    }
 }

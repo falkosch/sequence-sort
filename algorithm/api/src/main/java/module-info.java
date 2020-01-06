@@ -1,5 +1,5 @@
 module edu.schwabe.sequencesort.algorithm.api {
-	requires transitive org.eclipse.jdt.annotation;
+    requires transitive org.eclipse.jdt.annotation;
 
-	exports edu.schwabe.sequencesort.algorithm;
+    exports edu.schwabe.sequencesort.algorithm;
 }

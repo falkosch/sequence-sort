@@ -11,24 +11,24 @@ import edu.schwabe.sequencesort.algorithm.inplace.AlgorithmImpl;
 
 class GivenAnEmptyIntArray {
 
-	private static final int @NonNull [] EMPTY_INT_ARRAY = {};
+    private static final int @NonNull [] EMPTY_INT_ARRAY = {};
 
-	@Nested
-	class WhenSortedByTheAlgorithm {
+    @Nested
+    class WhenSortedByTheAlgorithm {
 
-		private Algorithm testUnit;
+        private Algorithm testUnit;
 
-		@BeforeEach
-		void setup() {
-			this.testUnit = new AlgorithmImpl();
-		}
+        @BeforeEach
+        void setup() {
+            this.testUnit = new AlgorithmImpl();
+        }
 
-		@Test
-		void itShouldRemainEmpty() {
-			Assertions.assertArrayEquals(
-			    GivenAnEmptyIntArray.EMPTY_INT_ARRAY,
-			    this.testUnit.sort(GivenAnEmptyIntArray.EMPTY_INT_ARRAY).returnedValue()
-			);
-		}
-	}
+        @Test
+        void itShouldRemainEmpty() {
+            Assertions.assertArrayEquals(
+                GivenAnEmptyIntArray.EMPTY_INT_ARRAY,
+                this.testUnit.sort(GivenAnEmptyIntArray.EMPTY_INT_ARRAY).returnedValue()
+            );
+        }
+    }
 }

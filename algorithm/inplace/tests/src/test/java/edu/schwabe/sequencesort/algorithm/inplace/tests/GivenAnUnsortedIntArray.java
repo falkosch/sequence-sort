@@ -11,24 +11,24 @@ import edu.schwabe.sequencesort.algorithm.inplace.AlgorithmImpl;
 
 class GivenAnUnsortedIntArray {
 
-	private static final int @NonNull [] UNSORTED_INT_ARRAY = { 3, 1, 2, 0, 4, 2, -1 };
+    private static final int @NonNull [] UNSORTED_INT_ARRAY = { 3, 1, 2, 0, 4, 2, -1 };
 
-	@Nested
-	class WhenSortedByTheAlgorithm {
+    @Nested
+    class WhenSortedByTheAlgorithm {
 
-		private Algorithm testUnit;
+        private Algorithm testUnit;
 
-		@BeforeEach
-		void setup() {
-			this.testUnit = new AlgorithmImpl();
-		}
+        @BeforeEach
+        void setup() {
+            this.testUnit = new AlgorithmImpl();
+        }
 
-		@Test
-		void itShouldBeTransformedIntoASortedIntArray() {
-			final int[] expectedSorted = { -1, 0, 1, 2, 2, 3, 4 };
-			Assertions.assertArrayEquals(
-			    expectedSorted, this.testUnit.sort(GivenAnUnsortedIntArray.UNSORTED_INT_ARRAY).returnedValue()
-			);
-		}
-	}
+        @Test
+        void itShouldBeTransformedIntoASortedIntArray() {
+            final int[] expectedSorted = { -1, 0, 1, 2, 2, 3, 4 };
+            Assertions.assertArrayEquals(
+                expectedSorted, this.testUnit.sort(GivenAnUnsortedIntArray.UNSORTED_INT_ARRAY).returnedValue()
+            );
+        }
+    }
 }
