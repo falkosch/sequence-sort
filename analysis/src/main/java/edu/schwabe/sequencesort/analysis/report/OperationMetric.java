@@ -4,11 +4,11 @@ public final class OperationMetric {
 
   private final long mValue;
 
-  private final long mN;
+  private final long mItemCount;
 
-  public OperationMetric(final long value, final long n) {
+  public OperationMetric(final long value, final long itemCount) {
     this.mValue = value;
-    this.mN = n;
+    this.mItemCount = itemCount;
   }
 
   private double doubleValue() {
@@ -16,7 +16,7 @@ public final class OperationMetric {
   }
 
   private double doubleN() {
-    return this.mN;
+    return this.mItemCount;
   }
 
   public Long value() {

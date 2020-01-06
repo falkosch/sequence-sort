@@ -6,7 +6,7 @@ import org.eclipse.jdt.annotation.NonNull;
 public interface Reporter {
 
   void display(
-    @NonNull Class<? extends Algorithm> algorithmUnderTestClass,
-    @NonNull Stream<OperationReport> operationReportStream
+    @NonNull Class<? extends Algorithm> algorithmClass,
+    @NonNull Stream<OperationReport> reportsStream
   );
 }

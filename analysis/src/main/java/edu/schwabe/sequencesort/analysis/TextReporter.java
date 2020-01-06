@@ -54,9 +54,9 @@ public final class TextReporter implements Reporter {
   }
 
   private static void printMetric(
-    final String metricName, final String metricVariableName, final long metricValue, final long n
+    final String metricName, final String metricVariableName, final long metricValue, final long itemCount
   ) {
-    final var metric = new OperationMetric(metricValue, n);
+    final var metric = new OperationMetric(metricValue, itemCount);
     TextReporter.printMetric(metricName, metricVariableName, metric);
   }
 
