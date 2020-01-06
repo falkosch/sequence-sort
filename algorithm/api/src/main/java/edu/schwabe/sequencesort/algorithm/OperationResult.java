@@ -4,31 +4,31 @@ import org.eclipse.jdt.annotation.NonNull;
 
 public final class OperationResult<T> {
 
-  private long comparisons = 0;
-  private long swaps = 0;
+  private long _comparisons = 0;
+  private long _swaps = 0;
 
   @SuppressWarnings("null")
-  private T returnedValue = null;
+  private T _returnedValue = null;
 
   public OperationResult() {
   }
 
   public OperationResult(final long comparisons, final long swaps, final T returnedValue) {
-    this.comparisons = comparisons;
-    this.swaps = swaps;
-    this.returnedValue = returnedValue;
+    this._comparisons = comparisons;
+    this._swaps = swaps;
+    this._returnedValue = returnedValue;
   }
 
   public long comparisons() {
-    return this.comparisons;
+    return this._comparisons;
   }
 
   public long swaps() {
-    return this.swaps;
+    return this._swaps;
   }
 
   public T returnedValue() {
-    return this.returnedValue;
+    return this._returnedValue;
   }
 
   @NonNull

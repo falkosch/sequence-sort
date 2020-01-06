@@ -5,32 +5,32 @@ import org.eclipse.jdt.annotation.NonNull;
 public final class OperationReport {
 
   @NonNull
-  private final OperationResult<int @NonNull []> operationResult;
+  private final OperationResult<int @NonNull []> _operationResult;
 
-  private final int trial;
+  private final int _trial;
 
-  private final long duration;
+  private final long _duration;
 
   public OperationReport(
     @NonNull final OperationResult<int @NonNull []> operationResult, final int trial,
     final long duration
   ) {
-    this.operationResult = operationResult;
-    this.trial = trial;
-    this.duration = duration;
+    this._operationResult = operationResult;
+    this._trial = trial;
+    this._duration = duration;
   }
 
   @NonNull
   public OperationResult<int @NonNull []> operationResult() {
-    return this.operationResult;
+    return this._operationResult;
   }
 
   public int trial() {
-    return this.trial;
+    return this._trial;
   }
 
   public long duration() {
-    return this.duration;
+    return this._duration;
   }
 
 }
