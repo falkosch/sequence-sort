@@ -69,7 +69,7 @@ pipeline {
       steps {
         withSonarQubeEnv('sonarqube') {
           withEnv(["sonar.branch.name=${env.BRANCH_NAME}"]) {
-            sh 'mvn sonar:sonar'
+            sh 'mvn verify sonar:sonar'
           }
         }
         retry(2) {
