@@ -24,6 +24,24 @@
 
 		<junit-jupiter.version>5.6.0-RC1</junit-jupiter.version>
 	</properties>
+
+	<ciManagement>
+		<system>Jenkins Pipeline</system>
+		<url>http://localhost:8080/job/Github/job/sequence-sort/</url>
+	</ciManagement>
+
+	<issueManagement>
+		<system>GitHub Issues</system>
+		<url>https://github.com/falkosch/sequence-sort/issues</url>
+	</issueManagement>
+
+	<scm>
+		<connection>scm:git:https://github.com/falkosch/sequence-sort.git</connection>
+		<developerConnection>scm:git:git@github.com:falkosch/sequence-sort.git</developerConnection>
+		<tag>HEAD</tag>
+		<url>https://github.com/falkosch/sequence-sort</url>
+	</scm>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
