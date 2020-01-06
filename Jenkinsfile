@@ -19,7 +19,7 @@ pipeline {
   stages {
     stage('package') {
       steps {
-        sh 'mvn clean package verify site -B -U'
+        sh 'mvn clean package verify site -ntp'
       }
     }
     stage('report') {
@@ -29,19 +29,16 @@ pipeline {
             enabledForFailure: true,
             ignoreFailedBuilds: false,
             qualityGates: [[threshold: 1, type: 'TOTAL', unstable: true]],
-            tools: [checkStyle(pattern: 'reports/*.checkstyle.xml')]
+            tools: [
+              mavenConsole(),
+              java(),
+              javaDoc(),
+              checkStyle(pattern: '**/target/checkstyle-result.xml'),
+              cpd(pattern: '**/target/cpd.xml'),
+              pmdParser(pattern: '**/target/pmd.xml')
+            ]
           )
-          junit '**/reports/test-reports/TESTS*.xml'
-          cobertura([
-            coberturaReportFile: '**/reports/cobertura-coverage.xml',
-            conditionalCoverageTargets: '80, 0, 0',
-            enableNewApi: true,
-            lineCoverageTargets: '80, 0, 0',
-            maxNumberOfBuilds: 0,
-            methodCoverageTargets: '80, 0, 0',
-            onlyStable: false,
-            sourceEncoding: 'ASCII'
-          ])
+          junit '**/target/surefire-reports/TEST-*.xml'
         }
       }
     }
