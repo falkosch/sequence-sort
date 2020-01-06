@@ -1,4 +1,4 @@
-package edu.schwabe.sequencesort.testrunner;
+package edu.schwabe.sequencesort.demonstrator;
 
 import edu.schwabe.sequencesort.algorithm.Algorithm;
 import edu.schwabe.sequencesort.algorithm.OperationReport;
@@ -8,12 +8,12 @@ import java.util.ServiceLoader;
 import java.util.stream.IntStream;
 import org.eclipse.jdt.annotation.NonNull;
 
-final class Main {
+final class Bootstrapper {
 
   public static void main(final String[] args) {
     final var report = ServiceLoader.load(Reporter.class).findFirst().get();
     ServiceLoader.load(Algorithm.class)
-      .forEach(algorithmUnderTest -> Main.runTest(algorithmUnderTest, report));
+      .forEach(algorithmUnderTest -> Bootstrapper.runTest(algorithmUnderTest, report));
   }
 
   private static void runTest(
@@ -21,12 +21,12 @@ final class Main {
   ) {
 
     final var operationReportStream = IntStream.range(0, 7).mapToObj(trial -> {
-      final var n = (long) Math.pow(10, trial);
-      final var given = new Random(0).ints(n).toArray();
+      final var itemCount = (long) Math.pow(10, trial);
+      final var items = new Random(0).ints(itemCount).toArray();
 
       final var startTime = System.nanoTime();
 
-      final var operationResult = algorithmUnderTest.sort(given);
+      final var operationResult = algorithmUnderTest.sort(items);
 
       final var duration = System.nanoTime() - startTime;
 

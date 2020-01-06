@@ -15,11 +15,11 @@ public final class TextReporter implements Reporter {
 
   @Override
   public void display(
-    final @NonNull Class<? extends Algorithm> algorithmUnderTestClass,
-    final @NonNull Stream<OperationReport> operationReportStream
+    final @NonNull Class<? extends Algorithm> algorithmClass,
+    final @NonNull Stream<OperationReport> reportsStream
   ) {
-    System.out.println(algorithmUnderTestClass.getName());
-    operationReportStream.forEach(TextReporter::display);
+    System.out.println(algorithmClass.getName());
+    reportsStream.forEach(TextReporter::display);
   }
 
   private static void display(final @NonNull OperationReport report) {
