@@ -19,7 +19,7 @@ pipeline {
   stages {
     stage('package') {
       steps {
-        sh 'mvn clean package verify -U'
+        sh 'mvn clean package verify site -BU'
       }
     }
     stage('report') {
