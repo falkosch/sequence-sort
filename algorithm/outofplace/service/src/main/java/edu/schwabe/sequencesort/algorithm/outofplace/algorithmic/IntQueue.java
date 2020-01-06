@@ -7,9 +7,9 @@ import org.eclipse.jdt.annotation.NonNull;
 
 public final class IntQueue {
 
-  private IntQueueItem top = null;
-  private IntQueueItem tail = null;
-  private int size = 0;
+  private IntQueueItem mTop = null;
+  private IntQueueItem mTail = null;
+  private int mSize = 0;
 
   public IntQueue() {
     this(new int[0]);
@@ -24,21 +24,21 @@ public final class IntQueue {
   }
 
   public boolean empty() {
-    return this.size == 0;
+    return this.mSize == 0;
   }
 
   public int size() {
-    return this.size;
+    return this.mSize;
   }
 
   public void queue(final int value) {
     final var newNext = new IntQueueItem(value);
-    if (this.size == 0) {
-      this.top = this.tail = newNext;
+    if (this.mSize == 0) {
+      this.mTop = this.mTail = newNext;
     } else {
-      this.tail = this.tail.next(newNext);
+      this.mTail = this.mTail.next(newNext);
     }
-    this.size++;
+    this.mSize++;
   }
 
   public int consume(final IntQueue other) {
@@ -48,31 +48,31 @@ public final class IntQueue {
   }
 
   public int top() {
-    if (this.size == 0) {
+    if (this.mSize == 0) {
       return 0;
     }
 
-    return this.top.value();
+    return this.mTop.value();
   }
 
   public int dequeue() {
-    if (this.size == 0) {
+    if (this.mSize == 0) {
       return 0;
     }
 
-    final var res = this.top.value();
-    if (this.size == 1) {
-      this.top = this.tail = null;
+    final var res = this.mTop.value();
+    if (this.mSize == 1) {
+      this.mTop = this.mTail = null;
     } else {
-      this.top = this.top.next();
+      this.mTop = this.mTop.next();
     }
 
-    this.size--;
+    this.mSize--;
     return res;
   }
 
   public int @NonNull [] toArray() {
-    final var streamOfQueue = Stream.iterate(this.top, x -> x != null, x -> x.next());
+    final var streamOfQueue = Stream.iterate(this.mTop, x -> x != null, x -> x.next());
     final var values = streamOfQueue.mapToInt(x -> x.value()).toArray();
     if (values != null) {
       return values;

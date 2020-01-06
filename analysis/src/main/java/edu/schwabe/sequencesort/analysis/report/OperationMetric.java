@@ -2,25 +2,25 @@ package edu.schwabe.sequencesort.analysis.report;
 
 public final class OperationMetric {
 
-  private final long _value;
+  private final long mValue;
 
-  private final long n;
+  private final long mN;
 
   public OperationMetric(final long value, final long n) {
-    this._value = value;
-    this.n = n;
+    this.mValue = value;
+    this.mN = n;
   }
 
   private double doubleValue() {
-    return this._value;
+    return this.mValue;
   }
 
   private double doubleN() {
-    return this.n;
+    return this.mN;
   }
 
   public Long value() {
-    return this._value;
+    return this.mValue;
   }
 
   public Double divideByNLnN() {

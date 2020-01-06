@@ -5,31 +5,31 @@ import org.eclipse.jdt.annotation.Nullable;
 
 public final class IntQueueItem {
 
-  private final int value;
+  private final int mValue;
 
   @Nullable
-  private IntQueueItem next;
+  private IntQueueItem mNext;
 
   public IntQueueItem(final int value) {
     this(value, null);
   }
 
   public IntQueueItem(final int value, @Nullable final IntQueueItem next) {
-    this.value = value;
-    this.next = next;
+    this.mValue = value;
+    this.mNext = next;
   }
 
   public int value() {
-    return this.value;
+    return this.mValue;
   }
 
   @Nullable
   public IntQueueItem next() {
-    return this.next;
+    return this.mNext;
   }
 
   @NonNull
   public IntQueueItem next(final @NonNull IntQueueItem newNext) {
-    return this.next = newNext;
+    return this.mNext = newNext;
   }
 }
