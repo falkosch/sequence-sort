@@ -626,7 +626,7 @@
 			id="org.eclipse.jdt.core.formatter.insert_space_after_comma_in_constructor_declaration_throws"
 			value="insert" />
 		<setting id="org.eclipse.jdt.core.formatter.tabulation.size"
-			value="4" />
+			value="2" />
 		<setting
 			id="org.eclipse.jdt.core.formatter.insert_space_after_bitwise_operator"
 			value="insert" />
