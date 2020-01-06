@@ -1,7 +1,6 @@
 package edu.schwabe.sequencesort.algorithm.tests;
 
 import edu.schwabe.sequencesort.algorithm.OperationResult;
-import org.eclipse.jdt.annotation.NonNull;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -9,7 +8,7 @@ import org.junit.jupiter.api.Test;
 
 class GivenAnEmptyOperationResult {
 
-  private OperationResult<int @NonNull []> testUnit;
+  private OperationResult<int[]> testUnit;
 
   @BeforeEach
   void setup() {
@@ -19,7 +18,7 @@ class GivenAnEmptyOperationResult {
   @Nested
   class WhenAddingSwaps {
 
-    private OperationResult<int @NonNull []> actual;
+    private OperationResult<int[]> actual;
 
     @BeforeEach
     void setup() {

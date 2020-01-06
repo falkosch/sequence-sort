@@ -15,10 +15,6 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>org.eclipse.jdt</groupId>
-			<artifactId>org.eclipse.jdt.annotation</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>edu.schwabe.sequencesort.algorithm</groupId>
 			<artifactId>api</artifactId>
 			<version>[1.0.0-SNAPSHOT,2.0.0)</version>

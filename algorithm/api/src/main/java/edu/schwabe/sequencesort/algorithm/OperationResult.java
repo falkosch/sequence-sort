@@ -1,13 +1,10 @@
 package edu.schwabe.sequencesort.algorithm;
 
-import org.eclipse.jdt.annotation.NonNull;
-
 public final class OperationResult<T> {
 
   private long mComparisons = 0;
   private long mSwaps = 0;
 
-  @SuppressWarnings("null")
   private T mReturnedValue = null;
 
   public OperationResult() {
@@ -31,27 +28,22 @@ public final class OperationResult<T> {
     return this.mReturnedValue;
   }
 
-  @NonNull
-  public OperationResult<T> returnedValue(@NonNull final T newReturnedValue) {
+  public OperationResult<T> returnedValue(final T newReturnedValue) {
     return new OperationResult<>(this.comparisons(), this.swaps(), newReturnedValue);
   }
 
-  @NonNull
   public OperationResult<T> addComparisons(final long addCount) {
     return this.add(addCount, 0, this.returnedValue());
   }
 
-  @NonNull
   public OperationResult<T> addSwaps(final long addCount) {
     return this.add(0, addCount, this.returnedValue());
   }
 
-  @NonNull
-  public OperationResult<T> add(final @NonNull OperationResult<T> other) {
+  public OperationResult<T> add(final OperationResult<T> other) {
     return this.add(other.comparisons(), other.swaps(), other.returnedValue());
   }
 
-  @NonNull
   public OperationResult<T> add(
     final long addComparisons, final long addSwaps, final T newReturnedValue
   ) {

@@ -2,7 +2,6 @@ package edu.schwabe.sequencesort.algorithm.inplace.tests;
 
 import edu.schwabe.sequencesort.algorithm.Algorithm;
 import edu.schwabe.sequencesort.algorithm.inplace.AlgorithmImpl;
-import org.eclipse.jdt.annotation.NonNull;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -10,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 class GivenASortedIntArray {
 
-  private static final int @NonNull [] SORTED_INT_ARRAY = { -1, 0, 1, 2, 2, 3, 4 };
+  private static final int[] SORTED_INT_ARRAY = { -1, 0, 1, 2, 2, 3, 4 };
 
   @Nested
   class WhenSortedByTheAlgorithm {

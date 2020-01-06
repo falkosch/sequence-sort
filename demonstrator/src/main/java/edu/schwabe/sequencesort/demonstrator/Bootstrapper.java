@@ -7,7 +7,6 @@ import edu.schwabe.sequencesort.algorithm.Reporter;
 import java.util.Random;
 import java.util.ServiceLoader;
 import java.util.stream.IntStream;
-import org.eclipse.jdt.annotation.NonNull;
 
 final class Bootstrapper {
 
@@ -20,9 +19,7 @@ final class Bootstrapper {
       .forEach(algorithmUnderTest -> Bootstrapper.runTest(algorithmUnderTest, report.get()));
   }
 
-  private static void runTest(
-    final @NonNull Algorithm algorithmUnderTest, @NonNull final Reporter report
-  ) {
+  private static void runTest(final Algorithm algorithmUnderTest, final Reporter report) {
 
     final var operationReportStream = IntStream.range(0, 7).mapToObj(trial -> {
       final var itemCount = (long) Math.pow(10, trial);

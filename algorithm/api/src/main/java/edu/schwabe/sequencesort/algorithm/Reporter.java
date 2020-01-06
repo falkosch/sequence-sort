@@ -1,12 +1,8 @@
 package edu.schwabe.sequencesort.algorithm;
 
 import java.util.stream.Stream;
-import org.eclipse.jdt.annotation.NonNull;
 
 public interface Reporter {
 
-  void display(
-    @NonNull Class<? extends Algorithm> algorithmClass,
-    @NonNull Stream<OperationReport> reportsStream
-  );
+  void display(Class<? extends Algorithm> algorithmClass, Stream<OperationReport> reportsStream);
 }

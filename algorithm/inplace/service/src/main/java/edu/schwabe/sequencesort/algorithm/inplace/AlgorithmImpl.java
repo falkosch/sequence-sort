@@ -2,18 +2,16 @@ package edu.schwabe.sequencesort.algorithm.inplace;
 
 import edu.schwabe.sequencesort.algorithm.Algorithm;
 import edu.schwabe.sequencesort.algorithm.OperationResult;
-import org.eclipse.jdt.annotation.NonNull;
 
 public final class AlgorithmImpl implements Algorithm {
 
   @Override
-  @NonNull
-  public OperationResult<int @NonNull []> sort(final int @NonNull [] items) {
+  public OperationResult<int[]> sort(final int[] items) {
     return AlgorithmImpl.sortRecursive(items, 0, items.length).returnedValue(items);
   }
 
-  private static @NonNull OperationResult<int @NonNull []> sortRecursive(
-    final int @NonNull [] items, final int leftBound, final int rightBound
+  private static OperationResult<int[]> sortRecursive(
+    final int[] items, final int leftBound, final int rightBound
   ) {
     if (leftBound >= rightBound - 1) {
       return new OperationResult<>(0, 0, items);

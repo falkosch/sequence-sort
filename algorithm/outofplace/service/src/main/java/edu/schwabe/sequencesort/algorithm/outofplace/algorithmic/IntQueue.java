@@ -4,11 +4,10 @@ import java.util.Arrays;
 import java.util.Objects;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
-import org.eclipse.jdt.annotation.NonNull;
 
 public final class IntQueue {
 
-  private static final int @NonNull [] EMPTY_ARRAY = new int[0];
+  private static final int[] EMPTY_ARRAY = new int[0];
 
   private IntQueueItem mTop = null;
   private IntQueueItem mTail = null;
@@ -22,7 +21,7 @@ public final class IntQueue {
     this(new int[] { item });
   }
 
-  public IntQueue(final int @NonNull [] items) {
+  public IntQueue(final int[] items) {
     Arrays.stream(items).forEach(this::queue);
   }
 
@@ -74,7 +73,7 @@ public final class IntQueue {
     return res;
   }
 
-  public int @NonNull [] toArray() {
+  public int[] toArray() {
     final var streamOfQueue = Stream.iterate(this.mTop, Objects::nonNull, IntQueueItem::next);
     final var values = streamOfQueue.mapToInt(IntQueueItem::value).toArray();
     if (values != null) {

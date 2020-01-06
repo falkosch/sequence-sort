@@ -3,16 +3,13 @@ package edu.schwabe.sequencesort.algorithm.outofplace;
 import edu.schwabe.sequencesort.algorithm.Algorithm;
 import edu.schwabe.sequencesort.algorithm.OperationResult;
 import edu.schwabe.sequencesort.algorithm.outofplace.algorithmic.IntQueue;
-import org.eclipse.jdt.annotation.NonNull;
-import org.eclipse.jdt.annotation.Nullable;
 
 public final class AlgorithmImpl implements Algorithm {
 
-  private static final int @NonNull [] EMPTY_ARRAY = new int[0];
+  private static final int[] EMPTY_ARRAY = new int[0];
 
   @Override
-  @NonNull
-  public OperationResult<int @NonNull []> sort(final int @NonNull [] items) {
+  public OperationResult<int[]> sort(final int[] items) {
     final var operationResult = AlgorithmImpl.sortRecursive(new IntQueue(items));
     final var comparisons = operationResult.comparisons();
     final var swaps = operationResult.swaps();
@@ -21,15 +18,14 @@ public final class AlgorithmImpl implements Algorithm {
     return new OperationResult<>(comparisons, swaps, sortedItems);
   }
 
-  private static int @NonNull [] asArray(final @Nullable IntQueue sortedItems) {
+  private static int[] asArray(final IntQueue sortedItems) {
     if (sortedItems == null) {
       return AlgorithmImpl.EMPTY_ARRAY;
     }
     return sortedItems.toArray();
   }
 
-  @NonNull
-  private static OperationResult<@NonNull IntQueue> sortRecursive(final @NonNull IntQueue items) {
+  private static OperationResult<IntQueue> sortRecursive(final IntQueue items) {
     if (items.empty() || items.size() == 1) {
       return new OperationResult<>(0, 0, items);
     }
@@ -66,9 +62,8 @@ public final class AlgorithmImpl implements Algorithm {
       .add(outOfOrderOperationResult).add(mergedSortedQueues);
   }
 
-  @NonNull
-  private static OperationResult<@NonNull IntQueue> mergeSortedQueues(
-    final @NonNull IntQueue sortedSequence, final @NonNull IntQueue remainingSorted
+  private static OperationResult<IntQueue> mergeSortedQueues(
+    final IntQueue sortedSequence, final IntQueue remainingSorted
   ) {
 
     final var mergeSize = Math.min(sortedSequence.size(), remainingSorted.size());

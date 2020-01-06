@@ -2,7 +2,6 @@ package edu.schwabe.sequencesort.algorithm.outofplace.tests;
 
 import edu.schwabe.sequencesort.algorithm.Algorithm;
 import edu.schwabe.sequencesort.algorithm.outofplace.AlgorithmImpl;
-import org.eclipse.jdt.annotation.NonNull;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
@@ -10,7 +9,7 @@ import org.junit.jupiter.api.Test;
 
 class GivenAnEmptyIntArray {
 
-  private static final int @NonNull [] EMPTY_INT_ARRAY = {};
+  private static final int[] EMPTY_INT_ARRAY = {};
 
   @Nested
   class WhenSortedByTheAlgorithm {

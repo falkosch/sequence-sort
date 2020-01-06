@@ -3,7 +3,6 @@ package edu.schwabe.sequencesort.algorithm.tests;
 import edu.schwabe.sequencesort.algorithm.OperationReport;
 import edu.schwabe.sequencesort.algorithm.OperationResult;
 import java.util.stream.Stream;
-import org.eclipse.jdt.annotation.NonNull;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -13,9 +12,8 @@ class WhenCreatingAnOperationReport {
 
   @ParameterizedTest
   @MethodSource("creationParameters")
-  void itShouldNotThrow(
-    @NonNull final OperationResult<int @NonNull []> operationResult, final int trial,
-    final long duration
+  static void itShouldNotThrow(
+    final OperationResult<int[]> operationResult, final int trial, final long duration
   ) {
     Assertions.assertDoesNotThrow(() -> {
       return new OperationReport(operationResult, trial, duration);

@@ -9,26 +9,23 @@ import edu.schwabe.sequencesort.analysis.report.OperationMetric;
 import java.util.ServiceLoader;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Stream;
-import org.eclipse.jdt.annotation.NonNull;
 
 public final class TextReporter implements Reporter {
 
   @Override
   public void display(
-    final @NonNull Class<? extends Algorithm> algorithmClass,
-    final @NonNull Stream<OperationReport> reportsStream
+    final Class<? extends Algorithm> algorithmClass, final Stream<OperationReport> reportsStream
   ) {
     System.out.println(algorithmClass.getName());
     reportsStream.forEach(TextReporter::display);
   }
 
-  private static void display(final @NonNull OperationReport report) {
+  private static void display(final OperationReport report) {
     TextReporter.display(report.operationResult(), report.trial(), report.duration());
   }
 
   private static void display(
-    final @NonNull OperationResult<int @NonNull []> operationResult, final int trial,
-    final long duration
+    final OperationResult<int[]> operationResult, final int trial, final long duration
   ) {
     final var n = operationResult.returnedValue().length;
     final String isSortedQualifier = TextReporter.makeIsSortedQualifier(operationResult);
@@ -46,9 +43,7 @@ public final class TextReporter implements Reporter {
     TextReporter.printMetric("Swaps", "s", operationResult.swaps(), n);
   }
 
-  private static String makeIsSortedQualifier(
-    final @NonNull OperationResult<int @NonNull []> operationResult
-  ) {
+  private static String makeIsSortedQualifier(final OperationResult<int[]> operationResult) {
     final var sortedProperty = ServiceLoader.load(SortedProperty.class).findFirst();
     if (sortedProperty.isEmpty()) {
       return " - N/A - ";
