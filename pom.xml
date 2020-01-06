@@ -18,7 +18,7 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<project.reporting.outputDirectory>reports</project.reporting.outputDirectory>
 
-		<java-release.version>13</java-release.version>
+		<java-release.version>12</java-release.version>
 		<maven.compiler.source>${java-release.version}</maven.compiler.source>
 		<maven.compiler.target>${java-release.version}</maven.compiler.target>
 
