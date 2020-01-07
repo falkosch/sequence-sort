@@ -71,6 +71,7 @@ pipeline {
           }
         }
         retry(2) {
+          sleep 3
           timeout(time: 1, unit: 'MINUTES') {
             waitForQualityGate abortPipeline: true
           }
