@@ -15,6 +15,7 @@
 		<module>algorithm</module>
 		<module>analysis</module>
 		<module>demonstrator</module>
+		<module>tests-report-aggregate</module>
 	</modules>
 
 	<properties>
@@ -30,8 +31,6 @@
 		<sonar.java.coveragePlugin>jacoco</sonar.java.coveragePlugin>
 		<sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
 		<sonar.jacoco.reportPath>target/jacoco.exec</sonar.jacoco.reportPath>
-
-		<junit-jupiter.version>5.6.0-RC1</junit-jupiter.version>
 	</properties>
 
 	<ciManagement>
@@ -55,20 +54,8 @@
 		<dependencies>
 			<dependency>
 				<groupId>org.junit.jupiter</groupId>
-				<artifactId>junit-jupiter-api</artifactId>
-				<version>${junit-jupiter.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.junit.jupiter</groupId>
-				<artifactId>junit-jupiter-params</artifactId>
-				<version>${junit-jupiter.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.junit.jupiter</groupId>
-				<artifactId>junit-jupiter-engine</artifactId>
-				<version>${junit-jupiter.version}</version>
+				<artifactId>junit-jupiter</artifactId>
+				<version>5.6.0-RC1</version>
 				<scope>test</scope>
 			</dependency>
 		</dependencies>
@@ -191,13 +178,6 @@
 						<goals>
 							<goal>prepare-agent</goal>
 						</goals>
-					</execution>
-					<execution>
-						<id>report-aggregate</id>
-						<goals>
-							<goal>report-aggregate</goal>
-						</goals>
-						<phase>verify</phase>
 					</execution>
 				</executions>
 			</plugin>

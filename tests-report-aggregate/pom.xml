@@ -1,0 +1,70 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<parent>
+		<groupId>edu.schwabe.sequencesort</groupId>
+		<artifactId>sequencesort</artifactId>
+		<version>1.0.0</version>
+	</parent>
+
+	<artifactId>tests-report-aggregate</artifactId>
+	<packaging>pom</packaging>
+
+	<description>Aggregates the jacoco test coverage reports into one merged report. See https://github.com/jacoco/jacoco/wiki/MavenMultiModule#strategy-module-with-dependencies</description>
+
+	<dependencies>
+		<dependency>
+			<groupId>edu.schwabe.sequencesort.algorithm</groupId>
+			<artifactId>api</artifactId>
+			<version>[1.0.0-SNAPSHOT,2.0.0)</version>
+		</dependency>
+		<dependency>
+			<groupId>edu.schwabe.sequencesort.algorithm</groupId>
+			<artifactId>tests</artifactId>
+			<version>[1.0.0-SNAPSHOT,2.0.0)</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>edu.schwabe.sequencesort.algorithm.inplace</groupId>
+			<artifactId>service</artifactId>
+			<version>[1.0.0-SNAPSHOT,2.0.0)</version>
+		</dependency>
+		<dependency>
+			<groupId>edu.schwabe.sequencesort.algorithm.inplace</groupId>
+			<artifactId>tests</artifactId>
+			<version>[1.0.0-SNAPSHOT,2.0.0)</version>
+            <scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>edu.schwabe.sequencesort.algorithm.outofplace</groupId>
+			<artifactId>service</artifactId>
+			<version>[1.0.0-SNAPSHOT,2.0.0)</version>
+		</dependency>
+		<dependency>
+			<groupId>edu.schwabe.sequencesort.algorithm.outofplace</groupId>
+			<artifactId>tests</artifactId>
+			<version>[1.0.0-SNAPSHOT,2.0.0)</version>
+            <scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>report-aggregate</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
+</project>

@@ -16,8 +16,9 @@
 	<dependencies>
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
-			<artifactId>junit-jupiter-api</artifactId>
+			<artifactId>junit-jupiter</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>edu.schwabe.sequencesort.algorithm</groupId>
 			<artifactId>api</artifactId>
