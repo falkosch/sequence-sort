@@ -32,7 +32,7 @@ class GivenAnEmptyOperationResult {
 
     @Test
     void theNewOperationResultShouldHaveTheCountOfAddedSwaps() {
-      Assertions.assertEquals(10, this.actual.swaps());
+      Assertions.assertEquals(10, this.actual.getSwaps());
     }
   }
 }

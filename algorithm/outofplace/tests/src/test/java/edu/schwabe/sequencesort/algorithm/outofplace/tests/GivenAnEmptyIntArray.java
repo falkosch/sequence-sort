@@ -24,8 +24,8 @@ class GivenAnEmptyIntArray {
     @Test
     void itShouldRemainEmpty() {
       Assertions.assertArrayEquals(
-        GivenAnEmptyIntArray.EMPTY_INT_ARRAY,
-        this.testUnit.sort(GivenAnEmptyIntArray.EMPTY_INT_ARRAY).returnedValue()
+          GivenAnEmptyIntArray.EMPTY_INT_ARRAY,
+          this.testUnit.sort(GivenAnEmptyIntArray.EMPTY_INT_ARRAY).getReturnedValue()
       );
     }
   }

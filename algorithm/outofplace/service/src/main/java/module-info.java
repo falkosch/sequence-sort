@@ -4,5 +4,5 @@ module edu.schwabe.sequencesort.algorithm.outofplace {
   exports edu.schwabe.sequencesort.algorithm.outofplace;
 
   provides edu.schwabe.sequencesort.algorithm.Algorithm
-    with edu.schwabe.sequencesort.algorithm.outofplace.AlgorithmImpl;
+      with edu.schwabe.sequencesort.algorithm.outofplace.AlgorithmImpl;
 }

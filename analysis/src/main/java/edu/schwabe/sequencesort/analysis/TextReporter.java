@@ -14,33 +14,36 @@ public final class TextReporter implements Reporter {
 
   @Override
   public void display(
-    final Class<? extends Algorithm> algorithmClass, final Stream<OperationReport> reportsStream
+      final Class<? extends Algorithm> algorithmClass, final Stream<OperationReport> reportsStream
   ) {
     System.out.println(algorithmClass.getName());
     reportsStream.forEach(TextReporter::display);
   }
 
   private static void display(final OperationReport report) {
-    TextReporter.display(report.operationResult(), report.trial(), report.duration());
+    TextReporter.display(report.getOperationResult(), report.getTrial(), report.getDuration());
   }
 
   private static void display(
-    final OperationResult<int[]> operationResult, final int trial, final long duration
+      final OperationResult<int[]> operationResult, final int trial, final long duration
   ) {
-    final var n = operationResult.returnedValue().length;
-    final String isSortedQualifier = TextReporter.makeIsSortedQualifier(operationResult);
-    System.out
-      .printf("\tTrial %1$d with n=%2$d elements: array is %3$s%n", Integer.valueOf(trial), Long.valueOf(n), isSortedQualifier);
+    final var n = operationResult.getReturnedValue().length;
+    final var isSortedQualifier = TextReporter.makeIsSortedQualifier(operationResult);
+    final var boxedTrial = Integer.valueOf(trial);
+    final var boxedN = Long.valueOf(n);
+    System.out.printf(
+        "\tTrial %1$d with n=%2$d elements: array is %3$s%n", boxedTrial, boxedN, isSortedQualifier
+    );
 
     final long durationSeconds = TimeUnit.NANOSECONDS.toSeconds(duration) + 1;
     final long durationPerElement = duration / n;
     System.out.printf(
-      "\t\tTime:\t\t\t%1$dns | <%2$ds%n", Long.valueOf(duration), Long.valueOf(durationSeconds)
+        "\t\tTime:\t\t\t%1$dns | <%2$ds%n", Long.valueOf(duration), Long.valueOf(durationSeconds)
     );
     System.out.printf("\t\tTime per element:\t%1$dns%n", Long.valueOf(durationPerElement));
 
-    TextReporter.printMetric("Comparisons", "c", operationResult.comparisons(), n);
-    TextReporter.printMetric("Swaps", "s", operationResult.swaps(), n);
+    TextReporter.printMetric("Comparisons", "c", operationResult.getComparisons(), n);
+    TextReporter.printMetric("Swaps", "s", operationResult.getSwaps(), n);
   }
 
   private static String makeIsSortedQualifier(final OperationResult<int[]> operationResult) {
@@ -55,25 +58,25 @@ public final class TextReporter implements Reporter {
   }
 
   private static void printMetric(
-    final String metricName, final String metricVariableName, final long metricValue,
-    final long itemCount
+      final String metricName, final String metricVariableName, final long metricValue,
+      final long itemCount
   ) {
     final var metric = new OperationMetric(metricValue, itemCount);
     TextReporter.printMetric(metricName, metricVariableName, metric);
   }
 
   private static void printMetric(
-    final String metricName, final String metricVariableName, final OperationMetric metric
+      final String metricName, final String metricVariableName, final OperationMetric metric
   ) {
     System.out.printf(
-      "\t\t%1$s:\t %2$s=%3$d | %2$s/(n*ln(n))=%4$f | %2$s/(n*sqrt(n))=%5$f | %2$s/(n*n)=%6$f%n",
-      metricName, metricVariableName, metric.value(),
-      // will be relatively near 1 if the algorithm is of time complexity O(n*log(n))
-      metric.divideByNLnN(),
-      // same ... if it is of tc. O(n*sqrt(n))
-      metric.divideByNSqrtN(),
-      // same ... if it is of tc. O(n*n)
-      metric.divideBySqrN()
+        "\t\t%1$s:\t %2$s=%3$d | %2$s/(n*ln(n))=%4$f | %2$s/(n*sqrt(n))=%5$f | %2$s/(n*n)=%6$f%n",
+        metricName, metricVariableName, metric.getValueAsBoxedLong(),
+        // will be relatively near 1 if the algorithm is of time complexity O(n*log(n))
+        metric.divideValueByNLnN(),
+        // same ... if it is of tc. O(n*sqrt(n))
+        metric.divideByNSqrtN(),
+        // same ... if it is of tc. O(n*n)
+        metric.divideBySqrN()
     );
   }
 }

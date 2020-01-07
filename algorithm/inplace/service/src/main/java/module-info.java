@@ -4,5 +4,5 @@ module edu.schwabe.sequencesort.algorithm.inplace {
   exports edu.schwabe.sequencesort.algorithm.inplace;
 
   provides edu.schwabe.sequencesort.algorithm.Algorithm
-    with edu.schwabe.sequencesort.algorithm.inplace.AlgorithmImpl;
+      with edu.schwabe.sequencesort.algorithm.inplace.AlgorithmImpl;
 }

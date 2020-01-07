@@ -6,12 +6,12 @@ import edu.schwabe.sequencesort.algorithm.OperationResult;
 public final class AlgorithmImpl implements Algorithm {
 
   @Override
-  public OperationResult<int[]> sort(final int[] items) {
-    return AlgorithmImpl.sortRecursive(items, 0, items.length).returnedValue(items);
+  public OperationResult<int[]> sort(final int... items) {
+    return AlgorithmImpl.sortRecursive(items, 0, items.length).replaceReturnedValue(items);
   }
 
   private static OperationResult<int[]> sortRecursive(
-    final int[] items, final int leftBound, final int rightBound
+      final int[] items, final int leftBound, final int rightBound
   ) {
     if (leftBound >= rightBound - 1) {
       return new OperationResult<>(0, 0, items);
@@ -38,7 +38,8 @@ public final class AlgorithmImpl implements Algorithm {
     pivot++;
 
     // sort remaining sequence "items[pivot to rightBound]"
-    operationResult = operationResult.add(AlgorithmImpl.sortRecursive(items, pivot, rightBound));
+    operationResult =
+        operationResult.mergeWith(AlgorithmImpl.sortRecursive(items, pivot, rightBound));
 
     // merge sorted sequence and now sorted remaining sequence
     var fromLeftBoundApproachingPivot = leftBound;
@@ -52,7 +53,7 @@ public final class AlgorithmImpl implements Algorithm {
       } else {
 
         operationResult = operationResult
-          .addSwaps((long) fromPivotApproachingRightBound - (long) fromLeftBoundApproachingPivot);
+            .addSwaps((long) fromPivotApproachingRightBound - (long) fromLeftBoundApproachingPivot);
 
         final int rightItem = items[fromPivotApproachingRightBound];
 

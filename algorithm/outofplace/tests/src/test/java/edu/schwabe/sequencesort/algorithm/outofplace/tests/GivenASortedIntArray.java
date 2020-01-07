@@ -24,8 +24,8 @@ class GivenASortedIntArray {
     @Test
     void itShouldRemainSorted() {
       Assertions.assertArrayEquals(
-        GivenASortedIntArray.SORTED_INT_ARRAY,
-        this.testUnit.sort(GivenASortedIntArray.SORTED_INT_ARRAY).returnedValue()
+          GivenASortedIntArray.SORTED_INT_ARRAY,
+          this.testUnit.sort(GivenASortedIntArray.SORTED_INT_ARRAY).getReturnedValue()
       );
     }
   }

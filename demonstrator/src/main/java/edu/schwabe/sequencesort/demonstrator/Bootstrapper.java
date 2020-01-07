@@ -16,7 +16,7 @@ final class Bootstrapper {
       return;
     }
     ServiceLoader.load(Algorithm.class)
-      .forEach(algorithmUnderTest -> Bootstrapper.runTest(algorithmUnderTest, report.get()));
+        .forEach(algorithmUnderTest -> Bootstrapper.runTest(algorithmUnderTest, report.get()));
   }
 
   private static void runTest(final Algorithm algorithmUnderTest, final Reporter report) {

@@ -13,7 +13,7 @@ class WhenCreatingAnOperationReport {
   @ParameterizedTest
   @MethodSource("creationParameters")
   static void itShouldNotThrow(
-    final OperationResult<int[]> operationResult, final int trial, final long duration
+      final OperationResult<int[]> operationResult, final int trial, final long duration
   ) {
     Assertions.assertDoesNotThrow(() -> {
       return new OperationReport(operationResult, trial, duration);
@@ -22,6 +22,6 @@ class WhenCreatingAnOperationReport {
 
   static Stream<Arguments> creationParameters() {
     return Stream
-      .of(Arguments.of(new OperationResult<>(), Integer.valueOf(0), Integer.valueOf(0)), Arguments.of(new OperationResult<>(0, 0, new int[0]), Integer.valueOf(0), Integer.valueOf(1)), Arguments.of(new OperationResult<>(0, 0, new int[] { 0, 1 }), Integer.valueOf(1), Integer.valueOf(0)));
+        .of(Arguments.of(new OperationResult<>(), Integer.valueOf(0), Integer.valueOf(0)), Arguments.of(new OperationResult<>(0, 0, new int[0]), Integer.valueOf(0), Integer.valueOf(1)), Arguments.of(new OperationResult<>(0, 0, new int[] { 0, 1 }), Integer.valueOf(1), Integer.valueOf(0)));
   }
 }

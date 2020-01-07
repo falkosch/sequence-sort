@@ -4,9 +4,9 @@ module edu.schwabe.sequencesort.analysis {
   exports edu.schwabe.sequencesort.analysis;
 
   provides edu.schwabe.sequencesort.algorithm.SortedProperty
-    with edu.schwabe.sequencesort.analysis.ReflectsMonotonicOrderSortedProperty;
+      with edu.schwabe.sequencesort.analysis.ReflectsMonotonicOrderSortedProperty;
   provides edu.schwabe.sequencesort.algorithm.Reporter
-    with edu.schwabe.sequencesort.analysis.TextReporter;
+      with edu.schwabe.sequencesort.analysis.TextReporter;
 
   uses edu.schwabe.sequencesort.algorithm.SortedProperty;
 }

@@ -7,14 +7,20 @@ public final class ReflectsMonotonicOrderSortedProperty implements SortedPropert
 
   @Override
   public boolean fulfilledBy(final OperationResult<int[]> result) {
-    final var array = result.returnedValue();
+    final var array = result.getReturnedValue();
+    if (array == null || array.length == 0) {
+      return true;
+    }
+
     var predecessor = array[0];
+
     for (final int element : array) {
       if (predecessor > element) {
         return false;
       }
       predecessor = element;
     }
+
     return true;
   }
 }

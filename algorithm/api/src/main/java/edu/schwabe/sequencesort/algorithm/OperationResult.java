@@ -1,54 +1,121 @@
 package edu.schwabe.sequencesort.algorithm;
 
+/**
+ * Contains the results and metrics of sorting an array of numbers.
+ *
+ * @param <T> array type of numbers, e.g. <code>int[]</code>
+ */
 public final class OperationResult<T> {
 
-  private long mComparisons = 0;
-  private long mSwaps = 0;
+  private long comparisons = 0;
+  private long swaps = 0;
 
-  private T mReturnedValue = null;
+  private T returnedValue = null;
 
+  /**
+   * Creates an {@link OperationResult} with default values.
+   */
   public OperationResult() {
   }
 
+  /**
+   * Creates an {@link OperationResult} with the given values.
+   *
+   * @param comparisons   number of comparisons required to sort an array
+   * @param swaps         number of swaps required to sort an array
+   * @param returnedValue the sorted array
+   */
   public OperationResult(final long comparisons, final long swaps, final T returnedValue) {
-    this.mComparisons = comparisons;
-    this.mSwaps = swaps;
-    this.mReturnedValue = returnedValue;
+    this.comparisons = comparisons;
+    this.swaps = swaps;
+    this.returnedValue = returnedValue;
   }
 
-  public long comparisons() {
-    return this.mComparisons;
+  /**
+   * Returns the number of comparisons required to sort an array.
+   *
+   * @return number of comparisons
+   */
+  public long getComparisons() {
+    return this.comparisons;
   }
 
-  public long swaps() {
-    return this.mSwaps;
+  /**
+   * Returns the number of swaps required to sort an array.
+   *
+   * @return number of swaps
+   */
+  public long getSwaps() {
+    return this.swaps;
   }
 
-  public T returnedValue() {
-    return this.mReturnedValue;
+  /**
+   * Returns the result of sorting an array.
+   *
+   * @return the sorted array
+   */
+  public T getReturnedValue() {
+    return this.returnedValue;
   }
 
-  public OperationResult<T> returnedValue(final T newReturnedValue) {
-    return new OperationResult<>(this.comparisons(), this.swaps(), newReturnedValue);
+  /**
+   * Replaces the returned value and returns that as a new
+   * {@link OperationResult}. Does not mutate this object.
+   *
+   * @param newReturnedValue the returned value to set
+   * @return the new {@link OperationResult}
+   */
+  public OperationResult<T> replaceReturnedValue(final T newReturnedValue) {
+    return new OperationResult<>(this.getComparisons(), this.getSwaps(), newReturnedValue);
   }
 
-  public OperationResult<T> addComparisons(final long addCount) {
-    return this.add(addCount, 0, this.returnedValue());
+  /**
+   * Adds a number of comparisons and returns that as a new
+   * {@link OperationResult}. Does not mutate this object.
+   *
+   * @param value the number to add
+   * @return the new {@link OperationResult}
+   */
+  public OperationResult<T> addComparisons(final long value) {
+    return this.addValues(value, 0, this.getReturnedValue());
   }
 
-  public OperationResult<T> addSwaps(final long addCount) {
-    return this.add(0, addCount, this.returnedValue());
+  /**
+   * Adds a number of swaps and returns that as a new {@link OperationResult}.
+   * Does not mutate this object.
+   *
+   * @param value the number to add
+   * @return the new {@link OperationResult}
+   */
+  public OperationResult<T> addSwaps(final long value) {
+    return this.addValues(0, value, this.getReturnedValue());
   }
 
-  public OperationResult<T> add(final OperationResult<T> other) {
-    return this.add(other.comparisons(), other.swaps(), other.returnedValue());
+  /**
+   * Merges this and another given {@link OperationResult} into a new one.
+   *
+   * @param other another {@link OperationResult}
+   * @return the merged {@link OperationResult} having the sorted array
+   *         {@link #returnedValue} set at the other object.
+   */
+  public OperationResult<T> mergeWith(final OperationResult<T> other) {
+    return this.addValues(other.getComparisons(), other.getSwaps(), other.getReturnedValue());
   }
 
-  public OperationResult<T> add(
-    final long addComparisons, final long addSwaps, final T newReturnedValue
+  /**
+   * Adds number of comparisons and swaps, replaces the returned value, and
+   * returns that as a new {@link OperationResult}. Does not mutate this object.
+   *
+   * @param comparisonsToAdd the number of comparisons to add
+   * @param swapsToAdd       the number of swaps to add
+   * @param newReturnedValue the returned value to replace
+   * @return the new {@link OperationResult}
+   */
+  public OperationResult<T> addValues(
+      final long comparisonsToAdd, final long swapsToAdd, final T newReturnedValue
   ) {
     return new OperationResult<>(
-      this.comparisons() + addComparisons, this.swaps() + addSwaps, newReturnedValue
+        this.getComparisons() + comparisonsToAdd, this.getSwaps() + swapsToAdd, newReturnedValue
     );
   }
 }

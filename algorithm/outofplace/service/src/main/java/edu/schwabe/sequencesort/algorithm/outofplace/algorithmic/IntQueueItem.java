@@ -1,30 +1,63 @@
 package edu.schwabe.sequencesort.algorithm.outofplace.algorithmic;
 
+/**
+ * Contains a number and has a reference to another {@link IntQueueItem}.
+ */
 public final class IntQueueItem {
 
-  private final int mValue;
+  private final int value;
 
-  private IntQueueItem mNext;
+  private IntQueueItem next;
 
+  /**
+   * Creates a {@link IntQueueItem} for a given number.
+   *
+   * @param value the number
+   */
   public IntQueueItem(final int value) {
     this(value, null);
   }
 
+  /**
+   * Creates a {@link IntQueueItem} for a given number and a reference to the next
+   * {@link IntQueueItem}.
+   *
+   * @param value the number
+   * @param next  the next {@link IntQueueItem}
+   */
   public IntQueueItem(final int value, final IntQueueItem next) {
-    this.mValue = value;
-    this.mNext = next;
+    this.value = value;
+    this.next = next;
   }
 
-  public int value() {
-    return this.mValue;
+  /**
+   * Returns the number contained by this {@link IntQueueItem}.
+   *
+   * @return the number
+   */
+  public int getValue() {
+    return this.value;
   }
 
-  public IntQueueItem next() {
-    return this.mNext;
+  /**
+   * Returns the next {@link IntQueueItem}.
+   *
+   * @return the next {@link IntQueueItem} if this {@link IntQueueItem} is not the
+   *         tail part of the queue, otherwise <code>null</code>
+   */
+  public IntQueueItem getNext() {
+    return this.next;
   }
 
-  public IntQueueItem next(final IntQueueItem newNext) {
-    this.mNext = newNext;
-    return this.mNext;
+  /**
+   * Replaces the reference to the next {@link IntQueueItem} by a reference to
+   * another {@link IntQueueItem}.
+   *
+   * @param newNext the other {@link IntQueueItem}
+   * @return the other {@link IntQueueItem}
+   */
+  public IntQueueItem replaceNext(final IntQueueItem newNext) {
+    this.next = newNext;
+    return this.next;
   }
 }
