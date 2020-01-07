@@ -46,7 +46,7 @@ pipeline {
             deltaInstructionCoverage: '10', 
             deltaLineCoverage: '10', 
             deltaMethodCoverage: '10', 
-            execPattern: '**/target/jacoco.exec', 
+            execPattern: 'tests-report-aggregate/target/jacoco.exec', 
             maximumBranchCoverage: '90', 
             maximumClassCoverage: '90', 
             maximumComplexityCoverage: '90', 
