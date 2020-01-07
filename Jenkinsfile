@@ -34,8 +34,6 @@ pipeline {
               java(),
               javaDoc(),
               checkStyle(pattern: '**/target/checkstyle-result.xml'),
-              cpd(pattern: '**/target/cpd.xml'),
-              pmdParser(pattern: '**/target/pmd.xml')
             ]
           )
           junit '**/target/surefire-reports/TEST-*.xml'
