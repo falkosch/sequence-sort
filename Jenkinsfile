@@ -22,25 +22,13 @@ pipeline {
       }
       stages {
 
-        stage('clean compile') {
+        stage('clean') {
           steps {
-            sh 'mvn clean compile -ntp'
+            sh 'mvn clean -ntp'
           }
         }
 
-        stage('unit tests') {
-          steps {
-            sh 'mvn test -ntp'
-          }
-        }
-
-        stage('package') {
-          steps {
-            sh 'mvn package -ntp'
-          }
-        }
-
-        stage('integration tests') {
+        stage('build & tests') {
           steps {
             sh 'mvn verify -ntp'
           }
