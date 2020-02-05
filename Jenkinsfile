@@ -1,16 +1,22 @@
 pipeline {
   agent none
+  
   options {
+    buildDiscarder(logRotator(numToKeepStr: '10'))
+    preserveStashes(buildCount: 3)
     skipStagesAfterUnstable()
     timeout(time: 1, unit: 'HOURS')
   }
+  
   triggers {
     pollSCM('H */15 * * *')
   }
+  
   environment {
       CI = true
       HOME = "${env.WORKSPACE}"
   }
+  
   stages {
     stage('maven') {
       agent {
@@ -20,8 +26,8 @@ pipeline {
           args '-v $WORKSPACE/.m2:/root/.m2'
         }
       }
+      
       stages {
-
         stage('clean') {
           steps {
             sh 'mvn clean -ntp'
@@ -89,16 +95,15 @@ pipeline {
                 sh 'mvn sonar:sonar'
               }
             }
-            retry(2) {
-              sleep 3
-              timeout(time: 1, unit: 'MINUTES') {
-                waitForQualityGate abortPipeline: true
-              }
+            
+            sleep 3
+            
+            timeout(time: 1, unit: 'MINUTES') {
+              waitForQualityGate abortPipeline: true
             }
           }
-        }
-
+        } // sonar quality gate
       }
-    }
+    } // maven
   }
 }
