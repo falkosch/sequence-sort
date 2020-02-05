@@ -48,7 +48,7 @@ public final class OperationMetric {
    *
    * @return the result of the division
    */
-  public Double divideByNSqrtN() {
+  public Double divideValueByNSqrtN() {
     final var doubleN = this.getItemsCountAsRawDouble();
     final var result = this.getValueAsRawDouble() / (doubleN * Math.sqrt(doubleN));
     return Double.valueOf(result);
@@ -60,7 +60,7 @@ public final class OperationMetric {
    *
    * @return the result of the division
    */
-  public Double divideBySqrN() {
+  public Double divideValueBySqrN() {
     final var doubleN = this.getItemsCountAsRawDouble();
     final var result = this.getValueAsRawDouble() / (doubleN * doubleN);
     return Double.valueOf(result);

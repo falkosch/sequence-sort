@@ -74,9 +74,9 @@ public final class TextReporter implements Reporter {
         // will be relatively near 1 if the algorithm is of time complexity O(n*log(n))
         metric.divideValueByNLnN(),
         // same ... if it is of tc. O(n*sqrt(n))
-        metric.divideByNSqrtN(),
+        metric.divideValueByNSqrtN(),
         // same ... if it is of tc. O(n*n)
-        metric.divideBySqrN()
+        metric.divideValueBySqrN()
     );
   }
 }

@@ -50,5 +50,11 @@
 			<version>[1.0.0-SNAPSHOT,2.0.0)</version>
             <scope>test</scope>
 		</dependency>
+
+        <dependency>
+            <groupId>edu.schwabe.sequencesort</groupId>
+            <artifactId>analysis</artifactId>
+            <version>[1.0.0-SNAPSHOT,2.0.0)</version>
+        </dependency>
 	</dependencies>
 </project>
