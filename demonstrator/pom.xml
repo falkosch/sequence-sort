@@ -20,13 +20,13 @@
 			<version>[1.0.0-SNAPSHOT,2.0.0)</version>
 		</dependency>
 		<dependency>
-			<groupId>edu.schwabe.sequencesort.algorithm.inplace</groupId>
-			<artifactId>service</artifactId>
+			<groupId>edu.schwabe.sequencesort.algorithm</groupId>
+			<artifactId>inplace</artifactId>
 			<version>[1.0.0-SNAPSHOT,2.0.0)</version>
 		</dependency>
 		<dependency>
-			<groupId>edu.schwabe.sequencesort.algorithm.outofplace</groupId>
-			<artifactId>service</artifactId>
+			<groupId>edu.schwabe.sequencesort.algorithm</groupId>
+			<artifactId>outofplace</artifactId>
 			<version>[1.0.0-SNAPSHOT,2.0.0)</version>
 		</dependency>
 		<dependency>

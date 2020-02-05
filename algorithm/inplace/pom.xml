@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -10,15 +10,19 @@
 		<version>1.0.0</version>
 	</parent>
 
-	<groupId>edu.schwabe.sequencesort.algorithm.inplace</groupId>
 	<artifactId>inplace</artifactId>
-	<version>1.0.0</version>
-	<packaging>pom</packaging>
+	<version>1.0.0-SNAPSHOT</version>
 
-	<description>Aggregates the in-place variant of the sequence sort algorithm.</description>
+	<dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter</artifactId>
+		</dependency>
 
-	<modules>
-		<module>service</module>
-		<module>tests</module>
-	</modules>
+		<dependency>
+			<groupId>edu.schwabe.sequencesort.algorithm</groupId>
+			<artifactId>api</artifactId>
+			<version>[1.0.0-SNAPSHOT,2.0.0)</version>
+		</dependency>
+	</dependencies>
 </project>

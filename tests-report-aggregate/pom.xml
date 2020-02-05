@@ -22,39 +22,18 @@
 		</dependency>
 		<dependency>
 			<groupId>edu.schwabe.sequencesort.algorithm</groupId>
-			<artifactId>tests</artifactId>
-			<version>[1.0.0-SNAPSHOT,2.0.0)</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>edu.schwabe.sequencesort.algorithm.inplace</groupId>
-			<artifactId>service</artifactId>
+			<artifactId>inplace</artifactId>
 			<version>[1.0.0-SNAPSHOT,2.0.0)</version>
 		</dependency>
 		<dependency>
-			<groupId>edu.schwabe.sequencesort.algorithm.inplace</groupId>
-			<artifactId>tests</artifactId>
-			<version>[1.0.0-SNAPSHOT,2.0.0)</version>
-            <scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>edu.schwabe.sequencesort.algorithm.outofplace</groupId>
-			<artifactId>service</artifactId>
+			<groupId>edu.schwabe.sequencesort.algorithm</groupId>
+			<artifactId>outofplace</artifactId>
 			<version>[1.0.0-SNAPSHOT,2.0.0)</version>
 		</dependency>
 		<dependency>
-			<groupId>edu.schwabe.sequencesort.algorithm.outofplace</groupId>
-			<artifactId>tests</artifactId>
+			<groupId>edu.schwabe.sequencesort</groupId>
+			<artifactId>analysis</artifactId>
 			<version>[1.0.0-SNAPSHOT,2.0.0)</version>
-            <scope>test</scope>
 		</dependency>
-
-        <dependency>
-            <groupId>edu.schwabe.sequencesort</groupId>
-            <artifactId>analysis</artifactId>
-            <version>[1.0.0-SNAPSHOT,2.0.0)</version>
-        </dependency>
 	</dependencies>
 </project>
