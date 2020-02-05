@@ -29,10 +29,8 @@ public final class TextReporter implements Reporter {
   ) {
     final var n = operationResult.getReturnedValue().length;
     final var isSortedQualifier = TextReporter.makeIsSortedQualifier(operationResult);
-    final var boxedTrial = Integer.valueOf(trial);
-    final var boxedN = Integer.valueOf(n);
     System.out.printf(
-        "\tTrial %1$d with n=%2$d elements: array is %3$s%n", boxedTrial, boxedN, isSortedQualifier
+        "\tTrial %1$d with n=%2$d elements: array is %3$s%n", Integer.valueOf(trial), Integer.valueOf(n), isSortedQualifier
     );
 
     final long durationSeconds = TimeUnit.NANOSECONDS.toSeconds(duration) + 1;
