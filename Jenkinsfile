@@ -57,6 +57,7 @@ pipeline {
                 java(),
                 javaDoc(),
                 checkStyle(pattern: '**/target/checkstyle-result.xml'),
+                spotBugs(useRankAsPriority: true)
               ]
             )
 

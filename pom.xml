@@ -131,7 +131,7 @@
 					<version>3.0.0-M4</version>
 					<configuration>
 						<includes>
-						    <include>**/Scenario*.java</include>
+							<include>**/Scenario*.java</include>
 							<include>**/Given*.java</include>
 							<include>**/When*.java</include>
 						</includes>
@@ -139,9 +139,9 @@
 				</plugin>
 
 				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>findbugs-maven-plugin</artifactId>
-					<version>3.0.5</version>
+					<groupId>com.github.spotbugs</groupId>
+					<artifactId>spotbugs-maven-plugin</artifactId>
+					<version>3.1.12.2</version>
 				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
@@ -187,6 +187,15 @@
 
 	<reporting>
 		<plugins>
+			<plugin>
+				<groupId>com.github.spotbugs</groupId>
+				<artifactId>spotbugs-maven-plugin</artifactId>
+				<configuration>
+					<effort>Max</effort>
+					<xmlOutput>true</xmlOutput>
+				</configuration>
+			</plugin>
+
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
