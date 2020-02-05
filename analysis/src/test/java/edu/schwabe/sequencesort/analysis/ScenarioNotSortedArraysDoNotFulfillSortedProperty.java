@@ -7,16 +7,16 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 
-public class ScenarioOneValueOrEmptyArraysFulfillSortedProperty {
+public class ScenarioNotSortedArraysDoNotFulfillSortedProperty {
 
   @Nested
-  public class GivenSortedArray {
+  public class GivenNotSortedArray {
 
     private OperationResult<int[]> toValidate;
 
     @BeforeEach
     public void setup() {
-      this.toValidate = new OperationResult<>(0, 0, new int[] {});
+      this.toValidate = new OperationResult<>(0, 0, new int[] { 0, -1, 1 });
     }
 
     @Nested
@@ -37,12 +37,12 @@ public class ScenarioOneValueOrEmptyArraysFulfillSortedProperty {
         @BeforeEach
         public void setup() {
           this.actualValidationResult = GivenReflectsMonotonicOrderSortedProperty.this.testUnit
-              .fulfilledBy(GivenSortedArray.this.toValidate);
+              .fulfilledBy(GivenNotSortedArray.this.toValidate);
         }
 
         @Test
-        public void thenItShouldPass() {
-          Assertions.assertTrue(this.actualValidationResult);
+        public void thenItShouldFail() {
+          Assertions.assertFalse(this.actualValidationResult);
         }
       }
     }
