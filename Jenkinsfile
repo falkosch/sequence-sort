@@ -48,6 +48,16 @@ pipeline {
 
         stage('collect reports') {
           steps {
+          
+            publishHTML([
+              allowMissing: false,
+              alwaysLinkToLastBuild: true,
+              keepAll: false,
+              reportDir: 'target/site',
+              reportFiles: 'index.html',
+              reportName: 'Maven Site'
+            ])
+          
             recordIssues(
               enabledForFailure: true,
               ignoreFailedBuilds: false,

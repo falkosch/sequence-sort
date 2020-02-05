@@ -31,6 +31,8 @@
 		<sonar.coverage.jacoco.xmlReportPaths>${maven.multiModuleProjectDirectory}/tests-report-aggregate/target/site/jacoco-aggregate/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
 	</properties>
 
+	<url>http://localhost:8080/job/Github/job/sequence-sort/master</url>
+
 	<ciManagement>
 		<system>Jenkins Pipeline</system>
 		<url>http://localhost:8080/job/Github/job/sequence-sort/</url>
