@@ -30,7 +30,7 @@ public final class TextReporter implements Reporter {
     final var n = operationResult.getReturnedValue().length;
     final var isSortedQualifier = TextReporter.makeIsSortedQualifier(operationResult);
     final var boxedTrial = Integer.valueOf(trial);
-    final var boxedN = Long.valueOf(n);
+    final var boxedN = Integer.valueOf(n);
     System.out.printf(
         "\tTrial %1$d with n=%2$d elements: array is %3$s%n", boxedTrial, boxedN, isSortedQualifier
     );
