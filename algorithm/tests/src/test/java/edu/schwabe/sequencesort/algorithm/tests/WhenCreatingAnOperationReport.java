@@ -12,7 +12,7 @@ class WhenCreatingAnOperationReport {
 
   @ParameterizedTest
   @MethodSource("creationParameters")
-  static void itShouldNotThrow(
+  static void thenItShouldNotThrow(
       final OperationResult<int[]> operationResult, final int trial, final long duration
   ) {
     Assertions.assertDoesNotThrow(() -> {

@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 public class WhenCreatingAnAlgorithm {
 
   @Test
-  public void itShouldNotThrow() {
+  public void thenItShouldNotThrow() {
     Assertions.assertDoesNotThrow(() -> {
       return new AlgorithmImpl();
     });

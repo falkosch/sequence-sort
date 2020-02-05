@@ -22,7 +22,7 @@ class GivenAnUnsortedIntArray {
     }
 
     @Test
-    void itShouldBeTransformedIntoASortedIntArray() {
+    void thenItShouldBeTransformedIntoASortedIntArray() {
       final int[] expectedSorted = { -1, 0, 1, 2, 2, 3, 4 };
       Assertions.assertArrayEquals(
           expectedSorted, this.testUnit.sort(GivenAnUnsortedIntArray.UNSORTED_INT_ARRAY).getReturnedValue()

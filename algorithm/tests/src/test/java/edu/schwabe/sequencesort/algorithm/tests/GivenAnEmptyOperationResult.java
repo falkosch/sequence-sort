@@ -26,12 +26,12 @@ class GivenAnEmptyOperationResult {
     }
 
     @Test
-    void itShouldReturnANewOperationResult() {
+    void thenItShouldReturnANewOperationResult() {
       Assertions.assertNotSame(GivenAnEmptyOperationResult.this.testUnit, this.actual);
     }
 
     @Test
-    void theNewOperationResultShouldHaveTheCountOfAddedSwaps() {
+    void thenTheNewOperationResultShouldHaveTheCountOfAddedSwaps() {
       Assertions.assertEquals(10, this.actual.getSwaps());
     }
   }

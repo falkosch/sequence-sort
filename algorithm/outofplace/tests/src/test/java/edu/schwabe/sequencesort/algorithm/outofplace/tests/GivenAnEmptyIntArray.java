@@ -22,7 +22,7 @@ class GivenAnEmptyIntArray {
     }
 
     @Test
-    void itShouldRemainEmpty() {
+    void thenItShouldRemainEmpty() {
       Assertions.assertArrayEquals(
           GivenAnEmptyIntArray.EMPTY_INT_ARRAY,
           this.testUnit.sort(GivenAnEmptyIntArray.EMPTY_INT_ARRAY).getReturnedValue()
