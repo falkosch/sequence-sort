@@ -10,6 +10,8 @@ import java.util.stream.IntStream;
 
 final class Bootstrapper {
 
+  private static final Random RANDOM_WITH_FIXED_SEEK = new Random(0);
+
   public static void main(final String[] args) {
     final var report = ServiceLoader.load(Reporter.class).findFirst();
     if (report.isEmpty()) {
@@ -23,7 +25,7 @@ final class Bootstrapper {
 
     final var operationReportStream = IntStream.range(0, 7).mapToObj(trial -> {
       final var itemCount = (long) Math.pow(10, trial);
-      final var items = new Random(0).ints(itemCount).toArray();
+      final var items = Bootstrapper.RANDOM_WITH_FIXED_SEEK.ints(itemCount).toArray();
       if (items == null) {
         return new OperationReport(new OperationResult<>(), trial, -1);
       }
