@@ -11,8 +11,6 @@ import java.util.stream.Stream;
  */
 public final class IntQueue {
 
-  private static final int[] EMPTY_ARRAY = {};
-
   private IntQueueItem top = null;
   private IntQueueItem tail = null;
   private int size = 0;
@@ -117,10 +115,7 @@ public final class IntQueue {
   public int[] toArray() {
     final var streamOfQueue = Stream.iterate(this.top, Objects::nonNull, IntQueueItem::getNext);
     final var values = streamOfQueue.mapToInt(IntQueueItem::getValue).toArray();
-    if (values != null) {
-      return values;
-    }
-    return IntQueue.EMPTY_ARRAY;
+    return values;
   }
 
 }

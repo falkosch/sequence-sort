@@ -27,7 +27,6 @@ public final class TextReporter implements Reporter {
 
   private static final String NOT_SORTED_QUALIFIER = "NOT sorted";
   private static final String SORTED_QUALIFIER = "sorted";
-  private static final String SORTED_QUALIFIER_N_A = " - N/A - ";
 
   @Override
   public void display(
@@ -72,9 +71,6 @@ public final class TextReporter implements Reporter {
 
   private static String makeIsSortedQualifier(final OperationResult<int[]> operationResult) {
     final var sortedProperty = ServiceLoader.load(SortedProperty.class).findFirst();
-    if (sortedProperty.isEmpty()) {
-      return TextReporter.SORTED_QUALIFIER_N_A;
-    }
 
     final var propertyImplementor = sortedProperty.get();
     final var sortedPropertyFulfilled = propertyImplementor.fulfilledBy(operationResult);

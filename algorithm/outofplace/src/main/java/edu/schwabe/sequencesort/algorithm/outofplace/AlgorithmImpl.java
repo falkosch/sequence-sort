@@ -6,23 +6,14 @@ import edu.schwabe.sequencesort.algorithm.outofplace.algorithmic.IntQueue;
 
 public final class AlgorithmImpl implements Algorithm {
 
-  private static final int[] EMPTY_ARRAY = {};
-
   @Override
   public OperationResult<int[]> sort(final int... items) {
     final var operationResult = AlgorithmImpl.sortRecursive(new IntQueue(items));
     final var comparisons = operationResult.getComparisons();
     final var swaps = operationResult.getSwaps();
     final var sortedIntQueue = operationResult.getReturnedValue();
-    final var sortedItems = AlgorithmImpl.asArray(sortedIntQueue);
+    final var sortedItems = sortedIntQueue.toArray();
     return new OperationResult<>(comparisons, swaps, sortedItems);
-  }
-
-  private static int[] asArray(final IntQueue sortedItems) {
-    if (sortedItems == null) {
-      return AlgorithmImpl.EMPTY_ARRAY;
-    }
-    return sortedItems.toArray();
   }
 
   private static OperationResult<IntQueue> sortRecursive(final IntQueue items) {

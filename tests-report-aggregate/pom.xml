@@ -35,5 +35,10 @@
 			<artifactId>analysis</artifactId>
 			<version>[1.0.0-SNAPSHOT,2.0.0)</version>
 		</dependency>
+        <dependency>
+            <groupId>edu.schwabe.sequencesort</groupId>
+            <artifactId>demonstrator</artifactId>
+            <version>[1.0.0-SNAPSHOT,2.0.0)</version>
+        </dependency>
 	</dependencies>
 </project>

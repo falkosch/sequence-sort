@@ -16,6 +16,18 @@ import org.junit.jupiter.api.Test;
 
 public class ScenarioTextReporterDisplaysResults {
 
+  private PrintStream oldOut;
+
+  @BeforeEach
+  public void setup() {
+    this.oldOut = System.out;
+  }
+
+  @AfterEach
+  public void tearDown() {
+    System.setOut(this.oldOut);
+  }
+
   @Nested
   public class GivenTextReporter {
 
@@ -39,18 +51,6 @@ public class ScenarioTextReporterDisplaysResults {
 
         @Nested
         public class WhenOperationReportShouldBeDisplayed {
-
-          private PrintStream oldOut;
-
-          @BeforeEach
-          public void setup() {
-            this.oldOut = System.out;
-          }
-
-          @AfterEach
-          public void tearDown() {
-            System.setOut(this.oldOut);
-          }
 
           @Test
           public void thenItShouldRenderToSystemOut() throws IOException {
