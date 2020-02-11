@@ -1,4 +1,4 @@
-package edu.schwabe.sequencesort.demonstrator;
+package edu.schwabe.sequencesort.demonstrator.arguments;
 
 /**
  * Parses the trial argument from {@code String[]} arrays or {@link String}
@@ -9,6 +9,10 @@ public final class TrialArgumentParser {
   public static final int MINIMUM_TRIAL_COUNT = 1;
   public static final int MAXIMUM_TRIAL_COUNT = 7;
   public static final int DEFAULT_TRIAL_COUNT = 6;
+
+  private TrialArgumentParser() {
+    // hide ctor in static class
+  }
 
   /**
    * Parses the given {@code arguments} for a trial argument and returns its

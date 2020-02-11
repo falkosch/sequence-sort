@@ -114,8 +114,7 @@ public final class IntQueue {
    */
   public int[] toArray() {
     final var streamOfQueue = Stream.iterate(this.top, Objects::nonNull, IntQueueItem::getNext);
-    final var values = streamOfQueue.mapToInt(IntQueueItem::getValue).toArray();
-    return values;
+    return streamOfQueue.mapToInt(IntQueueItem::getValue).toArray();
   }
 
 }

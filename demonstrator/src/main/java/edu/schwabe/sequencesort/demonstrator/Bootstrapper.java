@@ -3,6 +3,7 @@ package edu.schwabe.sequencesort.demonstrator;
 import edu.schwabe.sequencesort.algorithm.Algorithm;
 import edu.schwabe.sequencesort.algorithm.OperationReport;
 import edu.schwabe.sequencesort.algorithm.Reporter;
+import edu.schwabe.sequencesort.demonstrator.arguments.TrialArgumentParser;
 import java.util.Random;
 import java.util.ServiceLoader;
 import java.util.stream.IntStream;
@@ -15,13 +16,10 @@ final class Bootstrapper {
     final int trialCount = TrialArgumentParser.parseTrialArgument(args);
 
     final var reporter = ServiceLoader.load(Reporter.class).findFirst();
-    if (reporter.isEmpty()) {
-      return;
-    }
 
-    ServiceLoader.load(Algorithm.class).forEach(algorithmUnderTest -> {
-      Bootstrapper.runTest(algorithmUnderTest, reporter.get(), trialCount);
-    });
+    ServiceLoader.load(Algorithm.class).forEach(
+        algorithmUnderTest -> Bootstrapper.runTest(algorithmUnderTest, reporter.get(), trialCount)
+    );
   }
 
   private static void runTest(
