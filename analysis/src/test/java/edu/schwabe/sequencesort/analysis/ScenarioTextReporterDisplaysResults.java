@@ -58,13 +58,15 @@ public class ScenarioTextReporterDisplaysResults {
               public int value = 0;
             };
 
-            try (var out = new OutputStream() {
+            final class CountingStream extends OutputStream {
 
               @Override
               public void write(final int b) {
                 counter.value += b;
               }
-            }; var printStream = new PrintStream(out, true);) {
+            }
+
+            try (var out = new CountingStream(); var printStream = new PrintStream(out, true);) {
               System.setOut(printStream);
 
               GivenTextReporter.this.testUnit.display(
