@@ -1,22 +1,22 @@
 pipeline {
-  agent none
-  
+  agent any
+
   options {
     buildDiscarder(logRotator(numToKeepStr: '10'))
     preserveStashes(buildCount: 3)
     skipStagesAfterUnstable()
     timeout(time: 1, unit: 'HOURS')
   }
-  
+
   triggers {
     pollSCM('H */15 * * *')
   }
-  
+
   environment {
       CI = true
       HOME = "${env.WORKSPACE}"
   }
-  
+
   stages {
     stage('maven') {
       agent {
@@ -26,7 +26,7 @@ pipeline {
           args '-v $WORKSPACE/.m2:/root/.m2'
         }
       }
-      
+
       stages {
         stage('clean') {
           steps {
@@ -48,7 +48,7 @@ pipeline {
 
         stage('collect reports') {
           steps {
-          
+
             publishHTML([
               allowMissing: false,
               alwaysLinkToLastBuild: true,
@@ -57,7 +57,7 @@ pipeline {
               reportFiles: 'index.html',
               reportName: 'Maven Site'
             ])
-          
+
             recordIssues(
               enabledForFailure: true,
               ignoreFailedBuilds: false,
@@ -101,20 +101,36 @@ pipeline {
 
         stage('sonar quality gate') {
           steps {
-            withSonarQubeEnv('sonarqube') {
-              withEnv(["sonar.branch.name=${env.BRANCH_NAME}"]) {
-                sh 'mvn sonar:sonar'
+            lock(resource: 'sonarcloud-sequence-sort') {
+              withSonarQubeEnv('sonarqube') {
+                withEnv(["sonar.branch.name=${env.BRANCH_NAME}"]) {
+                    sh 'mvn sonar:sonar'
+                }
               }
-            }
-            
-            sleep time: 20, unit: 'SECONDS'
-            
-            timeout(time: 1, unit: 'MINUTES') {
-              waitForQualityGate abortPipeline: true
-            }
+
+              sleep time: 20, unit: 'SECONDS'
+
+              timeout(time: 1, unit: 'MINUTES') {
+                waitForQualityGate abortPipeline: true
+              }
+            } // sonarcloud-sequence-sort
           }
         } // sonar quality gate
       }
     } // maven
+  }
+
+  post {
+    failure {
+      script {
+        committerEmail = sh(returnStdout: true, script: 'git --no-pager show -s --format=\'%ae\'').trim()
+      }
+
+      mail(
+        to: "${committerEmail}",
+        subject: "Failed Pipeline: ${currentBuild.fullDisplayName}",
+        body: "Something is wrong with ${env.BUILD_URL}"
+      )
+    }
   }
 }
