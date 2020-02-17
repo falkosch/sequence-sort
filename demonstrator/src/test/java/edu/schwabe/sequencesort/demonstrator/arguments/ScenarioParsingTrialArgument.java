@@ -1,6 +1,5 @@
 package edu.schwabe.sequencesort.demonstrator.arguments;
 
-import edu.schwabe.sequencesort.demonstrator.arguments.TrialArgumentParser;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Nested;
