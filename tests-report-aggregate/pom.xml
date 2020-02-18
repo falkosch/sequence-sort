@@ -35,10 +35,26 @@
 			<artifactId>analysis</artifactId>
 			<version>[1.0.0-SNAPSHOT,2.0.0)</version>
 		</dependency>
-        <dependency>
-            <groupId>edu.schwabe.sequencesort</groupId>
-            <artifactId>demonstrator</artifactId>
-            <version>[1.0.0-SNAPSHOT,2.0.0)</version>
-        </dependency>
+		<dependency>
+			<groupId>edu.schwabe.sequencesort</groupId>
+			<artifactId>demonstrator</artifactId>
+			<version>[1.0.0-SNAPSHOT,2.0.0)</version>
+		</dependency>
 	</dependencies>
+
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>report-aggregate</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>
